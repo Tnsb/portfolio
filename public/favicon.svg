@@ -1,5 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" fill="#f5f1e8" />
-  <rect x="8" y="8" width="16" height="16" fill="none" stroke="#5c7369" stroke-width="2" />
-  <circle cx="16" cy="16" r="3" fill="#6f8548" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true">
+  <defs>
+    <mask id="lb-spots">
+      <rect width="32" height="32" fill="#fff"/>
+      <circle cx="12.4" cy="18.4" r="1.85" fill="#000"/>
+      <circle cx="19.6" cy="18.4" r="1.85" fill="#000"/>
+      <circle cx="13" cy="22.6" r="1.45" fill="#000"/>
+      <circle cx="19" cy="22.6" r="1.45" fill="#000"/>
+      <circle cx="16" cy="15.2" r="0.95" fill="#000"/>
+    </mask>
+    <linearGradient id="lb-body" x1="16" y1="10" x2="16" y2="29" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ff6eb3"/>
+      <stop offset="0.5" stop-color="#ff4d9d"/>
+      <stop offset="1" stop-color="#ff1f7a"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="8" fill="#23252e"/>
+  <!-- antennae -->
+  <path d="M12.6 7.2 L10.8 4" stroke="#ff1f7a" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+  <path d="M19.4 7.2 L21.2 4" stroke="#ff1f7a" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+  <circle cx="10" cy="3.35" r="0.75" fill="#ff4d9d"/>
+  <circle cx="22" cy="3.35" r="0.75" fill="#ff4d9d"/>
+  <!-- head -->
+  <ellipse cx="16" cy="8.6" rx="4.15" ry="3.05" fill="url(#lb-body)"/>
+  <!-- body + spots -->
+  <ellipse cx="16" cy="20.2" rx="7.6" ry="8.95" fill="url(#lb-body)" mask="url(#lb-spots)"/>
+  <!-- wing line -->
+  <path
+    d="M16 11.5 V28.5"
+    stroke="#292c38"
+    stroke-width="0.85"
+    stroke-linecap="round"
+    opacity="0.35"
+  />
 </svg>

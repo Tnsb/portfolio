@@ -54,24 +54,6 @@ export function Experience() {
                 <p className="card__period">{job.period}</p>
               </header>
               <p className="card__expanded">{job.expanded}</p>
-              {job.bulletGroups ? (
-                job.bulletGroups.map((group) => (
-                  <div key={group.title} className="bullet-group">
-                    <h3 className="bullet-group__title">{group.title}</h3>
-                    <ul className="bullets">
-                      {group.items.map((b, i) => (
-                        <li key={`${job.id}-${group.title}-${i}`}>{b}</li>
-                      ))}
-                    </ul>
-                  </div>
-                ))
-              ) : (
-                <ul className="bullets">
-                  {job.bullets.map((b, i) => (
-                    <li key={`${job.id}-${i}`}>{b}</li>
-                  ))}
-                </ul>
-              )}
             </article>
           ))}
         </div>

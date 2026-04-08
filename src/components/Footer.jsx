@@ -1,4 +1,4 @@
-import { TransitionLink } from "./TransitionLink.jsx";
+import { IconInline } from "./IconInline.jsx";
 import { links } from "../data/siteContent.js";
 
 export function Footer() {
@@ -10,11 +10,29 @@ export function Footer() {
           © {year} Tina Sibbal
         </p>
         <div className="footer__links">
-          <TransitionLink to="/contact">Contact</TransitionLink>
-          <a href={links.linkedin} target="_blank" rel="noopener noreferrer">
+          <a
+            className="footer__link-with-icon link-with-icon"
+            href={links.email}
+          >
+            <IconInline name="email" size={16} />
+            {links.emailDisplay}
+          </a>
+          <a
+            className="footer__link-with-icon link-with-icon"
+            href={links.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <IconInline name="linkedin" size={16} />
             LinkedIn
           </a>
-          <a href={links.github} target="_blank" rel="noopener noreferrer">
+          <a
+            className="footer__link-with-icon link-with-icon"
+            href={links.github}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <IconInline name="github" size={16} />
             GitHub
           </a>
         </div>

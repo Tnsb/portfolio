@@ -1,6 +1,6 @@
-import { TransitionLink } from "../components/TransitionLink.jsx";
 import { DocumentTitle } from "../components/DocumentTitle.jsx";
-import { links, skillGroups } from "../data/siteContent.js";
+import { IconInline } from "../components/IconInline.jsx";
+import { links } from "../data/siteContent.js";
 
 const heroTags = ["AI engineering", "Agents & production ML", "Shipping real systems"];
 
@@ -28,7 +28,7 @@ export function Home() {
           <div className="hero__rest">
             <p className="hero__tagline">
               M.S. in Artificial Intelligence at <strong>Carnegie Mellon</strong>. Before that, senior software engineer
-              at <strong>Trackonomy</strong> (data pipelines, APIs, and customer-facing tools for logistics).
+              at <strong>Trackonomy</strong>, a unicorn IoT logistics startup (last-mile visibility, APIs, and customer-facing tools).
             </p>
 
             <div className="hero-focus" role="group" aria-label="Focus areas">
@@ -39,10 +39,17 @@ export function Home() {
             </div>
 
             <div className="hero__actions">
-              <TransitionLink className="btn btn--primary" to="/contact">
-                Say hello
-              </TransitionLink>
-              <a className="btn btn--ghost" href={links.github} target="_blank" rel="noopener noreferrer">
+              <a className="btn btn--primary link-with-icon" href={links.email}>
+                <IconInline name="email" size={18} />
+                {links.emailDisplay}
+              </a>
+              <a
+                className="btn btn--ghost link-with-icon"
+                href={links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <IconInline name="github" size={18} />
                 GitHub
               </a>
               <a className="btn btn--ghost" href={links.linkedin} target="_blank" rel="noopener noreferrer">
@@ -51,49 +58,6 @@ export function Home() {
             </div>
           </div>
         </div>
-      </section>
-
-      <section className="section container">
-        <h2 className="section-title section-title--indexed">Explore</h2>
-        <p className="section-intro">About, experience, education, and projects.</p>
-        <div className="card-grid card-grid--home">
-          <TransitionLink className="card card--link" to="/about">
-            <h3>About</h3>
-            <span className="card__cta">Read more</span>
-          </TransitionLink>
-          <TransitionLink className="card card--link" to="/experience">
-            <h3>Experience</h3>
-            <p>Trackonomy, UC Davis IT, and SacHacks.</p>
-            <span className="card__cta">See roles</span>
-          </TransitionLink>
-          <TransitionLink className="card card--link" to="/education">
-            <h3>Education</h3>
-            <p>CMU M.S. in AI and UC Davis B.S. in CSE.</p>
-            <span className="card__cta">View schools</span>
-          </TransitionLink>
-          <TransitionLink className="card card--link" to="/projects">
-            <h3>Projects</h3>
-            <p>Course and side projects with links to repos.</p>
-            <span className="card__cta">Browse projects</span>
-          </TransitionLink>
-        </div>
-      </section>
-
-      <section className="section section--tight container">
-        <h2 className="section-title section-title--indexed">Skills at a glance</h2>
-        <div className="skills-preview">
-          {skillGroups.map((g) => (
-            <div key={g.label} className="skills-preview__item">
-              <h3>{g.label}</h3>
-              <p>{g.items}</p>
-            </div>
-          ))}
-        </div>
-        <p className="muted footer-note">
-          <TransitionLink to="/experience">Experience</TransitionLink>,{" "}
-          <TransitionLink to="/education">Education</TransitionLink>,{" "}
-          <TransitionLink to="/projects">Projects</TransitionLink>.
-        </p>
       </section>
     </>
   );

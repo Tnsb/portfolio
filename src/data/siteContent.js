@@ -2,10 +2,12 @@ export const links = {
   linkedin: "https://linkedin.com/in/tinasibbal",
   github: "https://github.com/Tnsb",
   email: "mailto:tsibbal@gmail.com",
+  /** Shown on buttons; inbox is the same address as `email`. */
+  emailDisplay: "tsibbal@gmail.com",
   emailAndrew: "mailto:tsibbal@andrew.cmu.edu",
 };
 
-/** Personal interests on About; edit to match you. */
+/** Optional: personal interests (not shown on site unless you add a section). */
 export const hobbies = [
   "Running and strength training",
   "Film, narrative podcasts, and long-form journalism",
@@ -13,20 +15,33 @@ export const hobbies = [
 ];
 
 /**
- * Writing / blog. Set mediumUrl to your Medium profile when live.
- * Add { title, href, date? } to posts as you publish.
+ * Writing / blog. Per post: title, href, summary, coverSrc, coverAlt; optional date, readTime.
  */
 export const writing = {
-  mediumUrl: "https://medium.com/@tinasibbal",
-  intro:
-    "I am starting to write on AI engineering: agents, production ML, evaluation, and shipping reliable systems in the real world. Medium will be the main outlet.",
-  posts: [],
+  posts: [
+    {
+      id: "langgraph-drift-monitoring",
+      title:
+        "Your LangGraph agent has no idea if it’s drifting — here’s how to monitor it in production",
+      href: "https://medium.com/@tinasibbal27/your-langgraph-agent-has-no-idea-if-its-drifting-here-s-how-to-monitor-it-in-production-797d4ca1b0fd",
+      summary:
+        "Why traditional ML drift checks break down for agents, the four surfaces to watch (tool calls, routing, judge scores, latency), and how to instrument LangGraph without waiting for an Evidently-for-agents moment.",
+      coverSrc: "/blog/langgraph-monitoring-cover.png",
+      coverAlt:
+        "Desk and chair facing tall windows with a bright view of Oakland and the Cathedral of Learning in Pittsburgh.",
+      readTime: "4 min read",
+    },
+  ],
 };
 
 export const projects = [
   {
     id: "aeromind",
     name: "AeroMind",
+    mockupBg: "#c8d4ef",
+    mockupSrc: "/projects/aeromind-mockup.png",
+    mockupAlt:
+      "Operations dashboard with workflow KPIs, human gate approval, agent pipeline, and governance controls.",
     tag: "Multi-agent AI · Air cargo",
     body:
       "LangGraph-style air-cargo orchestration: load optimization, rerouting, and compliance agents; OpenAI tool use; pgvector for regulatory RAG; Postgres state; React dashboard for approvals. Scoping docs covered roles, escalation rules, and success metrics.",
@@ -42,11 +57,16 @@ export const projects = [
   {
     id: "movies",
     name: "Movie recommendation system",
-    tag: "Kafka · FastAPI · drift checks · team leadership",
+    mockupBg: "#f0d4dc",
+    mockupSrc: "/projects/movies-mockup.png",
+    mockupAlt:
+      "Query result table of watch events: id, time, user_id, movie_id, minute (sample ingestion data).",
+    mockupContain: true,
+    tag: "LightGBM · collaborative filtering · training at scale · governance",
     body:
-      "Kafka to PostgreSQL ingestion, FastAPI service, Pydantic validation, DLQs for bad events, and drift checks on rolling windows. I led the data path for a five-person team: ingestion plan, how we’d judge models (RMSE, training cost, latency, disk), milestones, and weekly syncs.",
+      "Trained and compared recommendation models on 240K+ ratings—collaborative filtering vs LightGBM—using RMSE, training time, model footprint, and inference latency; LightGBM was chosen for the full serving profile. The work also covered drift monitoring, provenance for data and model artifacts, compliance and security expectations, and load validation on a production-style path sustained past 1,000 events per second.",
     extra:
-      "Collaborative filtering vs LightGBM on 240K+ ratings: LightGBM won on RMSE, training time, and size, then we served it with a latency budget and CI-triggered reloads.",
+      "Served via FastAPI with CI-driven model reloads and latency targets aligned to the chosen model.",
     links: [
       {
         label: "GitHub",
@@ -57,6 +77,9 @@ export const projects = [
   {
     id: "crypto",
     name: "Real-time crypto volatility detection",
+    mockupBg: "#c8eadf",
+    mockupSrc: "/projects/crypto-mockup.png",
+    mockupAlt: "BTC-USD price line chart showing volatility over time.",
     tag: "Streaming features · XGBoost · production monitoring",
     body:
       "Live Bitcoin prices, hand-built indicators, and gradient-boosted models for near-term spikes, with MLflow experiments and Evidently for drift.",
@@ -72,6 +95,11 @@ export const projects = [
   {
     id: "stock-trader",
     name: "StockTrader: competing analysis agents",
+    mockupBg: "#f2e8c9",
+    mockupContain: true,
+    mockupSrc: "/projects/stock-trader-mockup.png",
+    mockupAlt:
+      "StockTrader multi-agent dashboard: summary stats, analysis table, LangGraph pipeline, and debate results.",
     tag: "LangGraph · Groq · yfinance · debate mode",
     body:
       "Two LLM strategy agents (momentum vs value contrarian) analyze the same market data in parallel. An evaluator scores agreement; Debate Mode lets each agent rebut on disagreement.",
@@ -82,6 +110,9 @@ export const projects = [
   {
     id: "rag-eval",
     name: "RAG evaluation pipeline",
+    mockupBg: "#e4daf7",
+    mockupSrc: "/projects/rag-mockup.png",
+    mockupAlt: "Internal RAG evaluation console: corpus list, Q&A panel, and RAGAS-style metric bars.",
     tag: "LangChain · FAISS · RAGAS",
     body:
       "RAG on 18 AI papers with LangChain and FAISS; scored with RAGAS (faithfulness, relevancy, context precision). Defined corpus, quality bar, 23 test questions, and retrieval vs generation failure buckets.",
@@ -93,6 +124,10 @@ export const projects = [
   {
     id: "hands",
     name: "Hand pose estimation",
+    mockupBg: "#f5dccf",
+    mockupSrc: "/projects/hands-mockup.png",
+    mockupAlt: "Tina Sibbal demonstrating fist gesture recognition with keypoint overlay.",
+    mockupNatural: true,
     tag: "YOLO11 pose · gestures · rehabilitation benchmarking",
     body:
       "YOLO11-based 21-keypoint hand tracking, rule-based gesture classifiers (open palm, fist, thumbs-up), rep counting for rehab-style exercises, and benchmarks vs MediaPipe.",
@@ -104,6 +139,10 @@ export const projects = [
   {
     id: "chef-nutritionist",
     name: "C.H.E.F. Nutritionist",
+    mockupBg: "#dce8cc",
+    mockupContain: true,
+    mockupSrc: "/projects/chef-mockup.png",
+    mockupAlt: "Meal Planner Streamlit UI with diet filters and daily meal cards (app only, no browser chrome).",
     tag: "Streamlit · Spoonacular · Groq · grocery integration",
     body:
       "AI meal-planning assistant: personalized prep from diet, calorie targets, and local grocery context, with recipes, nutrition, availability, shopping lists, and cost estimates.",
@@ -133,32 +172,7 @@ export const jobs = [
     location: "San Jose, CA",
     period: "Jul 2022 to Jul 2025",
     expanded:
-      "Built and ran production pipelines, APIs, and databases; primary software contact for Trackonomy’s largest client (Fortune 50 logistics), including roadmaps, dates, and escalations.",
-    bulletGroups: [
-      {
-        title: "Engineering & platform",
-        items: [
-          "Built real-time event-driven pipelines on Azure Service Bus to ingest delivery scan events across FedEx, UPS, and USPS, handling deduplication, ordering, and dead-letter queues so the platform could scale past 12M+ daily deliveries without losing data.",
-          "Designed and shipped 60+ REST APIs in Node.js and NestJS (Swagger, Zod validation, rate limiting) connecting logistics, scanning, and reporting, removing sync delays that had become recurring operational pain for clients.",
-          "Rewrote client-facing React apps and optimized SQL, indexes, and pagination, cutting average page load by over 95%, with hotspot fixes taking a device health dashboard from about five seconds to under one second for 1,000+ daily users.",
-          "Led a multi-region PostgreSQL consolidation with scripted migrations, rollback plans, and coordinated API/app updates, completing cutover with zero client-facing disruption while merging regional systems into one.",
-          "Built a shared TypeScript logging and tracing library (Elastic + Grafana) adopted across microservices, making cross-service incidents easier to reason about during outages.",
-          "Reduced deployment risk across 40+ services by fixing memory leaks, Docker misconfigurations, Redis pooling, and flaky GitLab CI, and raised automated test coverage ~70% (Jest/Vitest), with team-wide testing and documentation norms that measurably reduced bugs per release.",
-          "Onboarded engineers with internal docs, service walkthroughs, and incident runbooks, shortening ramp-up and mistakes born from unfamiliarity.",
-        ],
-      },
-      {
-        title: "Product, clients & delivery",
-        items: [
-          "Owned Trackonomy’s largest client relationship (Fortune 50 logistics), single point of contact for software feature prioritization, delivery timelines, and escalations across a major contract renewed annually.",
-          "Translated client requirements on reducing manual scanning and improving delivery visibility into engineering specs and sprint plans; coordinated both sides through delivery cycles to ship capabilities that eliminated 20M+ manual scans per day on the platform.",
-          "Coordinated cross-functional execution across engineering, QA, and client operations for the public launch of Trackonomy’s Last Mile product, managing dependencies, testing schedules, and client onboarding as the product grew to 12M+ processed deliveries daily.",
-          "Ran the database migration end to end: testing plan, data-integrity risks, aligned engineering and client on go-live, cut over without service disruption.",
-          "Defined requirements for a widely used device health dashboard, coordinated frontend, backend, and database work across engineers, and validated performance after launch, including the page-load win above.",
-          "Ran quarterly business reviews with the Fortune 500 client: performance reporting, risk flags, and roadmap updates from operational data.",
-        ],
-      },
-    ],
+      "Senior engineer on last-mile logistics across event pipelines, APIs, Postgres, and the platform’s largest enterprise account. Built Azure Service Bus ingestion for major carriers as volume passed 12M+ daily deliveries; shipped 60+ NestJS APIs and tightened client dashboards with SQL, indexing, and frontend work; led a multi-region Postgres consolidation with migrations and zero customer-facing downtime; and was the primary software contact for a Fortune 50 logistics client on roadmaps, launches, and reviews.",
   },
   {
     id: "ucd-it",
@@ -170,11 +184,7 @@ export const jobs = [
     location: "Davis, CA",
     period: "Nov 2020 to Jun 2022",
     expanded:
-      "Onboarding, permissions, and scripts for sensitive research systems: repeatable access and fewer repeat tickets.",
-    bullets: [
-      "Configured and maintained Active Directory access controls, login systems, and group security policies for 100+ researchers, handling onboarding, offboarding, and quarterly audits with no unauthorized access incidents over 18 months of sensitive research workloads.",
-      "Analyzed support-ticket patterns to pinpoint the highest-frequency failure categories (password resets, permission errors, VPN issues), then built Python diagnostic scripts that automated resolution and cut repeat escalations for the team.",
-    ],
+      "Research IT for the Office of Research: active directory and security policies for 100+ researchers, quarterly audits with no unauthorized-access incidents, onboarding, and Python diagnostics that automated the highest-volume ticket types—passwords, permissions, and VPN—so the team spent less time on repeat work.",
   },
   {
     id: "sachacks",
@@ -186,10 +196,7 @@ export const jobs = [
     location: "Greater Sacramento, CA",
     period: "Apr 2019 to May 2022",
     expanded:
-      "Marketing and outreach for a 500-student regional hackathon: campaigns, on-site experience, and materials for participants and partners.",
-    bullets: [
-      "Helped run digital and on-site marketing, partner-facing assets, and comms so the event stayed visible and well attended year over year.",
-    ],
+      "Marketing for Sacramento’s largest intercollegiate hackathon—digital campaigns, on-site promotion, and partner-facing assets—so the event stayed visible and well-attended year over year.",
   },
   {
     id: "alletec-intern",
@@ -201,11 +208,7 @@ export const jobs = [
     location: "Delhi, India",
     period: "Jul 2019 to Aug 2019",
     expanded:
-      "Internship on an engineering team in Delhi working on C# and SQL services around Dynamics-related products.",
-    bullets: [
-      "Refactored internal C# and SQL APIs to decouple 3 tightly coupled core modules that had accumulated across multiple product iterations, improving service scalability and enabling independent deployments that reduced cross-team coordination overhead and deployment risk.",
-      "Authored unit and integration tests for RESTful services, covering edge cases and error handling; the test suite was absorbed into the team's active regression pipeline and remained in use after the internship ended.",
-    ],
+      "Summer internship in Delhi on Microsoft Dynamics–related C# and SQL services: refactored APIs to decouple three core modules for cleaner deploys and added unit and integration tests that remained part of the team’s regression suite.",
   },
 ];
 
@@ -215,7 +218,6 @@ export const education = [
     detail: "M.S. in Artificial Intelligence",
     place: "Pittsburgh, PA",
     time: "Aug 2025 to Aug 2026",
-    notes: "Coursework: AI strategy, agents, production ML, security, and data engineering.",
     coursework: [
       "AI strategy, product framing, and organizational adoption",
       "Agentic systems, tool use, and multi-agent orchestration",
@@ -233,8 +235,7 @@ export const education = [
     school: "University of California, Davis",
     detail: "B.S. Computer Science & Engineering, minor in Economics",
     place: "Davis, CA",
-    time: "Jun 2022",
-    notes: "B.S. CSE with economics minor (micro, macro, econometrics).",
+    time: "Sep 2018 to Jun 2022",
     coursework: [
       "Algorithms, data structures, and discrete mathematics",
       "Computer architecture, operating systems, and concurrency",
@@ -248,31 +249,5 @@ export const education = [
       src: "/education/uc-davis-campus.png",
       alt: "UC Davis campus at sunset, with the water tower and evening light over the road and bike path.",
     },
-  },
-];
-
-export const skillGroups = [
-  {
-    label: "Product & leadership",
-    items:
-      "Roadmap planning, user research, go-to-market thinking, stakeholder management, Agile delivery, A/B testing, PRD writing, client management, quarterly business reviews, cross-functional coordination",
-  },
-  {
-    label: "Languages & core CS",
-    items: "Python, Java, JavaScript, TypeScript, C++, SQL, HTML/CSS",
-  },
-  {
-    label: "AI / ML",
-    items:
-      "PyTorch, TensorFlow, scikit-learn, XGBoost, LightGBM, Transformers, RAG, LangChain, LangGraph, Google ADK, MLflow, Evidently AI, RAGAS, FAISS, pgvector",
-  },
-  {
-    label: "Data & MLOps",
-    items: "Kafka, Spark, Airflow, Pydantic, Pandas, PostgreSQL-oriented data modeling",
-  },
-  {
-    label: "Web, infra & collaboration",
-    items:
-      "React, Next.js, Node.js, NestJS, FastAPI, Azure, AWS, GCP, Docker, Kubernetes, Git, GitHub Actions, Grafana, Redis, Figma, Jira",
   },
 ];

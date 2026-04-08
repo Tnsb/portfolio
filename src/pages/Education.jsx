@@ -8,7 +8,6 @@ export function Education() {
       <div className="container page page--education">
         <header className="page-header page-header--education">
           <h1>Education</h1>
-          <p className="page-header__lede">CMU and UC Davis.</p>
         </header>
 
         <div className="edu-showcase-stack">
