@@ -24,32 +24,39 @@ function clamp(n, lo, hi) {
   return Math.min(hi, Math.max(lo, n));
 }
 
-/** Five anchor points: corners + center — spread across the whole viewport. */
+/** Four insects, evenly spaced vertically; horizontal placement is fixed in CSS. */
 const BASE = [
-  { l: 11, t: 13 },
-  { l: 88, t: 14 },
-  { l: 50, t: 52 },
-  { l: 13, t: 82 },
-  { l: 86, t: 84 },
+  { key: "ladybug", t: 16 },
+  { key: "dragonfly", t: 36 },
+  { key: "firefly", t: 58 },
+  { key: "butterfly", t: 78 },
 ];
 
-const KEYS = ["ember-a", "ladybug", "dragonfly", "butterfly", "firefly"];
+const MIN_VERTICAL_GAP = 16;
 
 /**
- * CSS variables on `.insect-decor`: `--wall-{key}-left`, `--wall-{key}-top` (percent strings).
+ * CSS variables on `.insect-decor`: `--wall-{key}-top` (percent strings).
+ * Horizontal position uses per-insect gutter fractions in CSS.
  */
 export function insectWallVars(pathname) {
   const seed = hashPath(pathname);
   const rand = mulberry32(seed);
   const out = {};
+  const placed = [];
 
-  for (let i = 0; i < KEYS.length; i++) {
-    const jx = (rand() - 0.5) * 10;
-    const jy = (rand() - 0.5) * 12;
-    const l = clamp(BASE[i].l + jx, 4, 96);
-    const t = clamp(BASE[i].t + jy, 8, 92);
-    const key = KEYS[i];
-    out[`--wall-${key}-left`] = `${Math.round(l * 10) / 10}%`;
+  for (let i = 0; i < BASE.length; i++) {
+    const jy = (rand() - 0.5) * 8;
+    let t = clamp(BASE[i].t + jy, 12, 86);
+
+    for (const prev of placed) {
+      if (Math.abs(t - prev) < MIN_VERTICAL_GAP) {
+        t = prev + MIN_VERTICAL_GAP;
+      }
+    }
+    t = clamp(t, 12, 86);
+    placed.push(t);
+
+    const key = BASE[i].key;
     out[`--wall-${key}-top`] = `${Math.round(t * 10) / 10}%`;
   }
 

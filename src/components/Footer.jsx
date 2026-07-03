@@ -12,7 +12,7 @@ export function Footer() {
         seed={19}
         cols={14}
         rows={8}
-        colors={["#ffc300", "#f9f8f3"]}
+        colors={["#ffc300", "#f9f8f3", "#489c66"]}
       />
       <PixelCluster
         className="site-footer__pixels site-footer__pixels--right"
@@ -20,9 +20,9 @@ export function Footer() {
         seed={27}
         cols={12}
         rows={7}
-        colors={["#f9f8f3", "#ffc300"]}
+        colors={["#f9f8f3", "#ffc300", "#489c66"]}
       />
-      <div className="container footer__grid">
+      <div className="footer__grid">
         <p className="footer__note">
           © {year} Tina Sibbal
         </p>

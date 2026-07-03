@@ -19,7 +19,7 @@ function mulberry32(seed) {
 export function PixelCluster({
   cols = 16,
   rows = 9,
-  colors = ["#ffc300", "#ffc8e5"],
+  colors = ["#ffc300", "#ffc8e5", "#489c66"],
   seed = 7,
   origin = "bottom-left",
   className,
@@ -38,13 +38,12 @@ export function PixelCluster({
         const d = Math.min(1, Math.hypot(dx, dy) / Math.SQRT2);
         const p = Math.pow(1 - d, 2) * 0.9;
         if (rand() < p) {
+          // First color dominates; the rest of the palette shares the remainder
           const pick = rand();
           const color =
-            pick < 0.58
+            pick < 0.55 || colors.length === 1
               ? colors[0]
-              : pick < 0.92
-                ? colors[1 % colors.length]
-                : colors[colors.length - 1];
+              : colors[1 + Math.floor(rand() * (colors.length - 1))];
           // Mix of soft-cornered squares and tiny round dots for a cuter, airier feel
           const dot = rand() < 0.32;
           const size = dot ? CELL / 2 : CELL - 1;

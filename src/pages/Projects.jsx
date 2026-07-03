@@ -1,6 +1,5 @@
 import { DocumentTitle } from "../components/DocumentTitle.jsx";
 import { IconInline } from "../components/IconInline.jsx";
-import { PagePixels } from "../components/PagePixels.jsx";
 import { projects } from "../data/siteContent.js";
 
 export function Projects() {
@@ -8,7 +7,6 @@ export function Projects() {
     <>
       <DocumentTitle title="Projects" />
       <div className="container page">
-        <PagePixels seed={3} />
         <header className="page-header">
           <h1>Projects</h1>
         </header>
@@ -37,7 +35,7 @@ export function Projects() {
                 </figure>
               ) : null}
               <h2 className="card__title">{p.name}</h2>
-              <p className="project-tag">{p.tag}</p>
+              <p className="project-tag meta-chip">{p.tag}</p>
               <p>{p.body}</p>
               {p.extra ? <p className="muted small">{p.extra}</p> : null}
               {p.links?.length ? (

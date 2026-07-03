@@ -1,5 +1,4 @@
 import { DocumentTitle } from "../components/DocumentTitle.jsx";
-import { PagePixels } from "../components/PagePixels.jsx";
 import { education } from "../data/siteContent.js";
 
 export function Education() {
@@ -7,7 +6,6 @@ export function Education() {
     <>
       <DocumentTitle title="Education" />
       <div className="container page page--education">
-        <PagePixels seed={2} />
         <header className="page-header page-header--education">
           <h1>Education</h1>
         </header>
@@ -23,19 +21,20 @@ export function Education() {
                 key={e.school}
                 className={`edu-feature${i % 2 === 1 ? " edu-feature--reverse" : ""}`}
               >
-                <div className="edu-feature__media">
-                  <img
-                    src={src}
-                    srcSet={srcSet}
-                    sizes={srcSet ? "(min-width: 56rem) 44vw, 100vw" : undefined}
-                    alt={ph.alt}
-                    loading={i === 0 ? "eager" : "lazy"}
-                    decoding="async"
-                    width={900}
-                    height={1200}
-                  />
-                  <div className="edu-feature__media-shade" aria-hidden />
-                  <p className="edu-feature__place">{e.place}</p>
+                <div className="edu-feature__media edu-feature__media--campus-mat">
+                  <div className="edu-photo__frame">
+                    <img
+                      src={src}
+                      srcSet={srcSet}
+                      sizes={srcSet ? "(min-width: 56rem) 44vw, 100vw" : undefined}
+                      alt={ph.alt}
+                      loading={i === 0 ? "eager" : "lazy"}
+                      decoding="async"
+                      width={900}
+                      height={1200}
+                    />
+                    <p className="meta-chip edu-feature__place--in-frame">{e.place}</p>
+                  </div>
                 </div>
                 <div className="edu-feature__body">
                   <p className="edu-feature__eyebrow">{e.time}</p>

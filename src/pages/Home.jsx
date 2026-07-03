@@ -1,7 +1,7 @@
 import { DocumentTitle } from "../components/DocumentTitle.jsx";
 import { IconInline } from "../components/IconInline.jsx";
-import { PixelCluster } from "../components/PixelCluster.jsx";
 import { links } from "../data/siteContent.js";
+import { assetUrl } from "../utils/assetUrl.js";
 
 const heroTags = ["AI engineering", "Agents & production ML", "Shipping real systems"];
 
@@ -10,20 +10,6 @@ export function Home() {
     <>
       <DocumentTitle title="Home" />
       <section className="hero">
-        <PixelCluster
-          className="hero__pixels hero__pixels--right"
-          origin="bottom-right"
-          seed={11}
-          colors={["#ffc8e5", "#ffc300", "#cc1757"]}
-        />
-        <PixelCluster
-          className="hero__pixels hero__pixels--left"
-          origin="top-left"
-          seed={4}
-          cols={11}
-          rows={7}
-          colors={["#ffc300", "#ffc8e5", "#cc1757"]}
-        />
         <div className="hero__layout">
           <h1 className="hero__name">
             <span className="hero__name-first">Tina</span>
@@ -31,7 +17,7 @@ export function Home() {
           </h1>
           <figure className="hero__photo">
             <img
-              src="/images/tina-hero.png"
+              src={assetUrl("/images/tina-hero.png")}
               alt="Tina Sibbal outdoors with the San Francisco Bay and Golden Gate Bridge in the background"
               width={1600}
               height={1200}
@@ -42,13 +28,13 @@ export function Home() {
           </figure>
           <div className="hero__rest">
             <p className="hero__tagline">
-              M.S. in Artificial Intelligence at <strong>Carnegie Mellon</strong>, currently building{" "}
+              M.S. in AI Systems Management at <strong>Carnegie Mellon</strong>, currently building{" "}
               <strong>
                 <a href="https://github.com/Tnsb/vantage" target="_blank" rel="noopener noreferrer">
                   Vantage
                 </a>
               </strong>
-              , a simulation layer that forecasts the revenue impact of AI customer agents. Before that, senior software
+              , a simulation layer that forecasts the revenue impact of AI agents. Before that, senior software
               engineer at <strong>Trackonomy</strong>, a unicorn IoT logistics startup (last-mile visibility, APIs, and
               customer-facing tools).
             </p>
@@ -74,7 +60,13 @@ export function Home() {
                 <IconInline name="github" size={18} />
                 GitHub
               </a>
-              <a className="btn btn--ghost" href={links.linkedin} target="_blank" rel="noopener noreferrer">
+              <a
+                className="btn btn--ghost link-with-icon"
+                href={links.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <IconInline name="linkedin" size={18} />
                 LinkedIn
               </a>
             </div>

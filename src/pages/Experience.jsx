@@ -1,5 +1,4 @@
 import { DocumentTitle } from "../components/DocumentTitle.jsx";
-import { PagePixels } from "../components/PagePixels.jsx";
 import { jobs } from "../data/siteContent.js";
 
 export function Experience() {
@@ -7,7 +6,6 @@ export function Experience() {
     <>
       <DocumentTitle title="Experience" />
       <div className="container page">
-        <PagePixels seed={1} />
         <header className="page-header">
           <h1>Experience</h1>
         </header>
@@ -53,7 +51,7 @@ export function Experience() {
                   </div>
                 </div>
                 <p className="card__facts">
-                  <span className="card__period">{job.period}</span>
+                  <span className="meta-chip card__period">{job.period}</span>
                   <span className="card__loc muted">{job.location}</span>
                 </p>
               </header>

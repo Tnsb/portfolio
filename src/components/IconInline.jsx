@@ -1,3 +1,5 @@
+import { assetUrl } from "../utils/assetUrl.js";
+
 const IDS = {
   github: "github-icon",
   medium: "medium-icon",
@@ -19,7 +21,7 @@ export function IconInline({ name, className = "", size = 16 }) {
       aria-hidden
       focusable="false"
     >
-      <use href={`/icons.svg#${id}`} />
+      <use href={`${assetUrl("/icons.svg")}#${id}`} />
     </svg>
   );
 }

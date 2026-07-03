@@ -1,35 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true">
-  <defs>
-    <mask id="lb-spots">
-      <rect width="32" height="32" fill="#fff"/>
-      <circle cx="12.4" cy="18.4" r="1.85" fill="#000"/>
-      <circle cx="19.6" cy="18.4" r="1.85" fill="#000"/>
-      <circle cx="13" cy="22.6" r="1.45" fill="#000"/>
-      <circle cx="19" cy="22.6" r="1.45" fill="#000"/>
-      <circle cx="16" cy="15.2" r="0.95" fill="#000"/>
-    </mask>
-    <linearGradient id="lb-body" x1="16" y1="10" x2="16" y2="29" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#e0357a"/>
-      <stop offset="0.5" stop-color="#d42465"/>
-      <stop offset="1" stop-color="#cc1757"/>
-    </linearGradient>
-  </defs>
-  <rect width="32" height="32" rx="8" fill="#f9f8f3" stroke="#131210" stroke-width="1"/>
-  <!-- antennae -->
-  <path d="M12.6 7.2 L10.8 4" stroke="#cc1757" stroke-width="1.1" stroke-linecap="round" fill="none"/>
-  <path d="M19.4 7.2 L21.2 4" stroke="#cc1757" stroke-width="1.1" stroke-linecap="round" fill="none"/>
-  <circle cx="10" cy="3.35" r="0.75" fill="#e0357a"/>
-  <circle cx="22" cy="3.35" r="0.75" fill="#e0357a"/>
-  <!-- head -->
-  <ellipse cx="16" cy="8.6" rx="4.15" ry="3.05" fill="url(#lb-body)"/>
-  <!-- body + spots -->
-  <ellipse cx="16" cy="20.2" rx="7.6" ry="8.95" fill="url(#lb-body)" mask="url(#lb-spots)"/>
-  <!-- wing line -->
-  <path
-    d="M16 11.5 V28.5"
-    stroke="#f9f8f3"
-    stroke-width="0.85"
-    stroke-linecap="round"
-    opacity="0.55"
-  />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 48" shape-rendering="crispEdges" aria-hidden="true">
+  <!-- Plain pixel ladybug from site LADYBUG_MAP (ink #131210, magenta #cc1757) -->
+  <g>
+    <rect x="8" y="4" width="4" height="4" fill="#131210"/>
+    <rect x="32" y="4" width="4" height="4" fill="#131210"/>
+    <rect x="12" y="8" width="4" height="4" fill="#131210"/>
+    <rect x="28" y="8" width="4" height="4" fill="#131210"/>
+    <rect x="16" y="12" width="12" height="4" fill="#131210"/>
+    <rect x="12" y="16" width="20" height="4" fill="#131210"/>
+    <rect x="8" y="20" width="12" height="4" fill="#cc1757"/>
+    <rect x="20" y="20" width="4" height="4" fill="#131210"/>
+    <rect x="24" y="20" width="12" height="4" fill="#cc1757"/>
+    <rect x="4" y="24" width="8" height="4" fill="#cc1757"/>
+    <rect x="12" y="24" width="4" height="4" fill="#131210"/>
+    <rect x="16" y="24" width="4" height="4" fill="#cc1757"/>
+    <rect x="20" y="24" width="4" height="4" fill="#131210"/>
+    <rect x="24" y="24" width="4" height="4" fill="#cc1757"/>
+    <rect x="28" y="24" width="4" height="4" fill="#131210"/>
+    <rect x="32" y="24" width="8" height="4" fill="#cc1757"/>
+    <rect x="4" y="28" width="16" height="4" fill="#cc1757"/>
+    <rect x="20" y="28" width="4" height="4" fill="#131210"/>
+    <rect x="24" y="28" width="16" height="4" fill="#cc1757"/>
+    <rect x="4" y="32" width="4" height="4" fill="#cc1757"/>
+    <rect x="8" y="32" width="4" height="4" fill="#131210"/>
+    <rect x="12" y="32" width="8" height="4" fill="#cc1757"/>
+    <rect x="20" y="32" width="4" height="4" fill="#131210"/>
+    <rect x="24" y="32" width="8" height="4" fill="#cc1757"/>
+    <rect x="32" y="32" width="4" height="4" fill="#131210"/>
+    <rect x="36" y="32" width="4" height="4" fill="#cc1757"/>
+    <rect x="8" y="36" width="12" height="4" fill="#cc1757"/>
+    <rect x="20" y="36" width="4" height="4" fill="#131210"/>
+    <rect x="24" y="36" width="12" height="4" fill="#cc1757"/>
+    <rect x="12" y="40" width="8" height="4" fill="#cc1757"/>
+    <rect x="24" y="40" width="8" height="4" fill="#cc1757"/>
+  </g>
 </svg>

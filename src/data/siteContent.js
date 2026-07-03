@@ -1,3 +1,5 @@
+import { assetUrl } from "../utils/assetUrl.js";
+
 export const links = {
   linkedin: "https://linkedin.com/in/tinasibbal",
   github: "https://github.com/Tnsb",
@@ -22,11 +24,11 @@ export const writing = {
     {
       id: "langgraph-drift-monitoring",
       title:
-        "Your LangGraph agent has no idea if it’s drifting — here’s how to monitor it in production",
+        "Your LangGraph agent has no idea if it’s drifting: here’s how to monitor it in production",
       href: "https://medium.com/@tinasibbal27/your-langgraph-agent-has-no-idea-if-its-drifting-here-s-how-to-monitor-it-in-production-797d4ca1b0fd",
       summary:
         "Why traditional ML drift checks break down for agents, the four surfaces to watch (tool calls, routing, judge scores, latency), and how to instrument LangGraph without waiting for an Evidently-for-agents moment.",
-      coverSrc: "/blog/langgraph-monitoring-cover.png",
+      coverSrc: assetUrl("/blog/langgraph-monitoring-cover.png"),
       coverAlt:
         "Desk and chair facing tall windows with a bright view of Oakland and the Cathedral of Learning in Pittsburgh.",
       readTime: "4 min read",
@@ -39,18 +41,20 @@ export const projects = [
     id: "tessa",
     name: "Tessa: agentic transportation orchestration",
     mockupBg: "#ffe4f2",
-    mockupSrc: "/projects/tessa-mockup.png",
+    mockupSrc: assetUrl("/projects/tessa-mockup.png"),
     mockupAlt:
-      "Tessa orchestration dashboard: inbound email trigger flowing through a LangGraph intent router into Load Tracking, Load Watch, Freight Intelligence, and Exception Monitoring sub-flows.",
+      "Tessa workflow diagram: an inbound freight email flows through a LangGraph intent router into Load Tracking, Load Watch, Freight Intelligence, and Exception Monitoring sub-flows, ending in an automated response or human escalation.",
     tag: "LangGraph · intent routing · Armada capstone",
     body:
-      "Intent-routing layer in LangGraph that triages inbound freight requests into sub-flows—Load Tracking, Load Watch, Freight Intelligence, and Exception Monitoring—reducing the need for human involvement in email handling and increasing operational efficiency.",
+      "Intent-routing layer in LangGraph that triages inbound freight requests into sub-flows (Load Tracking, Load Watch, Freight Intelligence, and Exception Monitoring), reducing the need for human involvement in email handling and increasing operational efficiency.",
+    extra:
+      "Built with Armada as the CMU capstone: each inbound email is classified once at the router, then handled end-to-end by the matching LangGraph sub-flow.",
   },
   {
     id: "aeromind",
     name: "AeroMind",
     mockupBg: "#c8d4ef",
-    mockupSrc: "/projects/aeromind-mockup.png",
+    mockupSrc: assetUrl("/projects/aeromind-mockup.png"),
     mockupAlt:
       "Operations dashboard with workflow KPIs, human gate approval, agent pipeline, and governance controls.",
     tag: "Multi-agent AI · Air cargo",
@@ -69,7 +73,7 @@ export const projects = [
     id: "movies",
     name: "Movie recommendation system",
     mockupBg: "#f0d4dc",
-    mockupSrc: "/projects/movies-mockup.png",
+    mockupSrc: assetUrl("/projects/movies-mockup.png"),
     mockupAlt:
       "Query result table of watch events: id, time, user_id, movie_id, minute (sample ingestion data).",
     mockupContain: true,
@@ -88,7 +92,7 @@ export const projects = [
     id: "crypto",
     name: "Real-time crypto volatility detection",
     mockupBg: "#c8eadf",
-    mockupSrc: "/projects/crypto-mockup.png",
+    mockupSrc: assetUrl("/projects/crypto-mockup.png"),
     mockupAlt: "BTC-USD price line chart showing volatility over time.",
     tag: "Streaming features · XGBoost · production monitoring",
     body:
@@ -107,7 +111,7 @@ export const projects = [
     name: "StockTrader: competing analysis agents",
     mockupBg: "#f2e8c9",
     mockupContain: true,
-    mockupSrc: "/projects/stock-trader-mockup.png",
+    mockupSrc: assetUrl("/projects/stock-trader-mockup.png"),
     mockupAlt:
       "StockTrader multi-agent dashboard: summary stats, analysis table, LangGraph pipeline, and debate results.",
     tag: "LangGraph · Groq · yfinance · debate mode",
@@ -121,7 +125,7 @@ export const projects = [
     id: "rag-eval",
     name: "RAG evaluation pipeline",
     mockupBg: "#e4daf7",
-    mockupSrc: "/projects/rag-mockup.png",
+    mockupSrc: assetUrl("/projects/rag-mockup.png"),
     mockupAlt: "Internal RAG evaluation console: corpus list, Q&A panel, and RAGAS-style metric bars.",
     tag: "LangChain · FAISS · RAGAS",
     body:
@@ -135,12 +139,12 @@ export const projects = [
     id: "hands",
     name: "Hand pose estimation",
     mockupBg: "#f5dccf",
-    mockupSrc: "/projects/hands-mockup.png",
+    mockupSrc: assetUrl("/projects/hands-mockup.png"),
     mockupAlt: "Tina Sibbal demonstrating fist gesture recognition with keypoint overlay.",
     mockupNatural: true,
     tag: "PyTorch · ResNet CNN · rehabilitation",
     body:
-      "ResNet-based CNN trained in PyTorch to detect 21 hand keypoints from RGB images, benchmarked against Google MediaPipe—the first webcam-only solution purpose-built for at-home hand rehabilitation for stroke survivors.",
+      "ResNet-based CNN trained in PyTorch to detect 21 hand keypoints from RGB images, benchmarked against Google MediaPipe: the first webcam-only solution purpose-built for at-home hand rehabilitation for stroke survivors.",
     extra: "Gesture classifiers and rep counting for rehab-style exercises.",
     links: [
       { label: "GitHub", href: "https://github.com/tahazakir/hand_pose_est" },
@@ -151,7 +155,7 @@ export const projects = [
     name: "C.H.E.F. Nutritionist",
     mockupBg: "#dce8cc",
     mockupContain: true,
-    mockupSrc: "/projects/chef-mockup.png",
+    mockupSrc: assetUrl("/projects/chef-mockup.png"),
     mockupAlt: "Meal Planner Streamlit UI with diet filters and daily meal cards (app only, no browser chrome).",
     tag: "Streamlit · Spoonacular · Groq · grocery integration",
     body:
@@ -177,12 +181,12 @@ export const jobs = [
     title: "Co-founder",
     org: "Vantage",
     orgUrl: "https://github.com/Tnsb/vantage",
-    logoUrl: "/logos/vantage.svg",
-    tagline: "Predicted-revenue simulation for AI customer agents",
+    logoUrl: assetUrl("/logos/vantage.png"),
+    tagline: "Predicted-revenue simulation for AI agents",
     location: "Pittsburgh, PA",
     period: "2026 to Present",
     expanded:
-      "Point Vantage at an AI support or retention agent and it runs hundreds of realistic synthetic customers against it, returning a one-page forecast—churn-save rate, conversion, and escalation by customer segment—before the agent touches a real customer. Every run saves its predictions; when real results arrive, Vantage shows predicted vs. actual. Where Maxim, Coval, LangSmith, Arize, and Snowglobe sell QA scores to engineers, Vantage is the independent layer that sells predicted revenue impact to the P&L owner—and the only tool that tracks whether its predictions were right, compounding per-vertical calibration data with every run.",
+      "Point Vantage at an AI support or retention agent and it runs hundreds of realistic synthetic customers against it, returning a one-page forecast (churn-save rate, conversion, and escalation by customer segment) before the agent touches a real customer. Every run saves its predictions; when real results arrive, Vantage shows predicted vs. actual. Where Maxim, Coval, LangSmith, Arize, and Snowglobe sell QA scores to engineers, Vantage is the independent layer that sells predicted revenue impact to the P&L owner, and the only tool that tracks whether its predictions were right, compounding per-vertical calibration data with every run.",
   },
   {
     id: "trackonomy",
@@ -206,19 +210,19 @@ export const jobs = [
     location: "Davis, CA",
     period: "Nov 2020 to Jun 2022",
     expanded:
-      "Research IT for the Office of Research: active directory and security policies for 100+ researchers, quarterly audits with no unauthorized-access incidents, onboarding, and Python diagnostics that automated the highest-volume ticket types—passwords, permissions, and VPN—so the team spent less time on repeat work.",
+      "Research IT for the Office of Research: active directory and security policies for 100+ researchers, quarterly audits with no unauthorized-access incidents, onboarding, and Python diagnostics that automated the highest-volume ticket types (passwords, permissions, and VPN), so the team spent less time on repeat work.",
   },
   {
     id: "sachacks",
     title: "Marketing Associate",
     org: "SacHacks",
     orgUrl: "https://www.sachacks.io/",
-    logoUrl: "/logos/sachacks.png",
+    logoUrl: assetUrl("/logos/sachacks.png"),
     tagline: "Sacramento’s largest intercollegiate hackathon",
     location: "Greater Sacramento, CA",
     period: "Apr 2019 to May 2022",
     expanded:
-      "Marketing for Sacramento’s largest intercollegiate hackathon—digital campaigns, on-site promotion, and partner-facing assets—so the event stayed visible and well-attended year over year.",
+      "Marketing for Sacramento’s largest intercollegiate hackathon: digital campaigns, on-site promotion, and partner-facing assets, so the event stayed visible and well-attended year over year.",
   },
   {
     id: "alletec-intern",
@@ -237,7 +241,7 @@ export const jobs = [
 export const education = [
   {
     school: "Carnegie Mellon University",
-    detail: "M.S. in Artificial Intelligence",
+    detail: "M.S. in AI Systems Management",
     place: "Pittsburgh, PA",
     time: "Aug 2025 to Aug 2026",
     coursework: [
@@ -249,13 +253,13 @@ export const education = [
       "Decision modeling, data engineering, and analytics for AI workflows",
     ],
     campusPhoto: {
-      src: "/education/cmu-campus.png",
+      src: assetUrl("/education/cmu-campus.png"),
       alt: "Carnegie Mellon at dusk from Tepper: glass wall, wood-slat ceiling, lawn and brick buildings under a pink sunset.",
     },
   },
   {
     school: "University of California, Davis",
-    detail: "B.S. Computer Science & Engineering, minor in Economics",
+    detail: "B.S. Computer Science & Engineering, Minor in Economics",
     place: "Davis, CA",
     time: "Sep 2018 to Jun 2022",
     coursework: [
@@ -268,7 +272,7 @@ export const education = [
       "Economics minor: microeconomics, macroeconomics, econometrics, and applied theory",
     ],
     campusPhoto: {
-      src: "/education/uc-davis-campus.png",
+      src: assetUrl("/education/uc-davis-campus.png"),
       alt: "UC Davis campus at sunset, with the water tower and evening light over the road and bike path.",
     },
   },

@@ -1,6 +1,5 @@
 import { DocumentTitle } from "../components/DocumentTitle.jsx";
 import { IconInline } from "../components/IconInline.jsx";
-import { PagePixels } from "../components/PagePixels.jsx";
 import { writing } from "../data/siteContent.js";
 
 export function Blogs() {
@@ -8,7 +7,6 @@ export function Blogs() {
     <>
       <DocumentTitle title="Blogs" />
       <div className="container page page--blogs">
-        <PagePixels seed={4} />
         <header className="page-header page-header--blogs">
           <h1>Blogs</h1>
           <p className="page-header__lede">Writing on AI and engineering.</p>
@@ -24,20 +22,23 @@ export function Blogs() {
                 <div
                   className={`edu-feature blog-post__sheet${i % 2 === 1 ? " edu-feature--reverse" : ""}`}
                 >
-                  <div className="edu-feature__media">
+                  <div className="edu-feature__media edu-feature__media--campus-mat edu-feature__media--blog-mat">
                     {post.coverSrc ? (
-                      <img
-                        src={post.coverSrc}
-                        alt={post.coverAlt ?? ""}
-                        width={1200}
-                        height={675}
-                        loading={i === 0 ? "eager" : "lazy"}
-                        decoding="async"
-                      />
-                    ) : null}
-                    <div className="edu-feature__media-shade" aria-hidden />
-                    {post.readTime ? (
-                      <p className="edu-feature__place">{post.readTime}</p>
+                      <div className="edu-photo__frame edu-photo__frame--blog">
+                        <img
+                          src={post.coverSrc}
+                          alt={post.coverAlt ?? ""}
+                          width={1019}
+                          height={1024}
+                          loading={i === 0 ? "eager" : "lazy"}
+                          decoding="async"
+                        />
+                        {post.readTime ? (
+                          <p className="meta-chip edu-feature__place--in-frame">{post.readTime}</p>
+                        ) : null}
+                      </div>
+                    ) : post.readTime ? (
+                      <p className="meta-chip">{post.readTime}</p>
                     ) : null}
                   </div>
                   <div className="edu-feature__body">
