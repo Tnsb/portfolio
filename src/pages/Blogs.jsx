@@ -1,5 +1,6 @@
 import { DocumentTitle } from "../components/DocumentTitle.jsx";
 import { IconInline } from "../components/IconInline.jsx";
+import { PagePixels } from "../components/PagePixels.jsx";
 import { writing } from "../data/siteContent.js";
 
 export function Blogs() {
@@ -7,6 +8,7 @@ export function Blogs() {
     <>
       <DocumentTitle title="Blogs" />
       <div className="container page page--blogs">
+        <PagePixels seed={4} />
         <header className="page-header page-header--blogs">
           <h1>Blogs</h1>
           <p className="page-header__lede">Writing on AI and engineering.</p>

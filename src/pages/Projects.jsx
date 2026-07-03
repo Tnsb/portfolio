@@ -1,10 +1,6 @@
 import { DocumentTitle } from "../components/DocumentTitle.jsx";
 import { IconInline } from "../components/IconInline.jsx";
-import {
-  ButterflyGlyph,
-  DragonflyGlyph,
-  LadybugGlyph,
-} from "../components/InsectDecor.jsx";
+import { PagePixels } from "../components/PagePixels.jsx";
 import { projects } from "../data/siteContent.js";
 
 export function Projects() {
@@ -12,6 +8,7 @@ export function Projects() {
     <>
       <DocumentTitle title="Projects" />
       <div className="container page">
+        <PagePixels seed={3} />
         <header className="page-header">
           <h1>Projects</h1>
         </header>
@@ -28,11 +25,6 @@ export function Projects() {
                     p.mockupBg ? { "--project-mockup-bg": p.mockupBg } : undefined
                   }
                 >
-                  <div className="project-mockup__insects" aria-hidden>
-                    <ButterflyGlyph className="project-mockup__insect project-mockup__insect--butterfly" />
-                    <LadybugGlyph className="project-mockup__insect project-mockup__insect--ladybug" />
-                    <DragonflyGlyph className="project-mockup__insect project-mockup__insect--dragonfly" />
-                  </div>
                   <img
                     src={p.mockupSrc}
                     alt={p.mockupAlt ?? ""}
@@ -47,7 +39,7 @@ export function Projects() {
               <h2 className="card__title">{p.name}</h2>
               <p className="project-tag">{p.tag}</p>
               <p>{p.body}</p>
-              <p className="muted small">{p.extra}</p>
+              {p.extra ? <p className="muted small">{p.extra}</p> : null}
               {p.links?.length ? (
                 <p className="project-card__links">
                   {p.links.map((L) => (

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { LadybugGlyph } from "./InsectDecor.jsx";
 import { TransitionNavLink } from "./TransitionNavLink.jsx";
 
 const nav = [
@@ -35,10 +34,6 @@ export function Header() {
     <header className="site-header">
       <div className="site-header__inner">
         <div className="site-nav-shell">
-          <span className="site-nav-shell__mark site-nav-shell__mark--ladybug" aria-hidden>
-            <LadybugGlyph className="site-nav-shell__mark-svg site-nav-shell__mark-svg--ladybug" />
-          </span>
-
           <nav className="site-nav site-nav--desktop" aria-label="Primary">
             {nav.map(({ to, label, end }) => (
               <TransitionNavLink key={to} to={to} end={end} className={navClass}>
@@ -46,19 +41,6 @@ export function Header() {
               </TransitionNavLink>
             ))}
           </nav>
-
-          <span className="site-nav-shell__mark site-nav-shell__mark--butterfly" aria-hidden>
-            <svg className="site-nav-shell__mark-svg" viewBox="0 0 52 36" width="20" height="14">
-              <path
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.05"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M26 4v28M26 6C17 2 6 5 4.5 15.5c-.8 5.5 6.2 9.5 12.5 8C23.5 22 25 16 25.5 11M26 6c9-4 20-1 21.5 9.5c.8 5.5-6.2 9.5-12.5 8C28.5 22 27 16 26.5 11"
-              />
-            </svg>
-          </span>
 
           <button
             type="button"

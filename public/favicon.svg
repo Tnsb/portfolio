@@ -9,17 +9,17 @@
       <circle cx="16" cy="15.2" r="0.95" fill="#000"/>
     </mask>
     <linearGradient id="lb-body" x1="16" y1="10" x2="16" y2="29" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#ff6eb3"/>
-      <stop offset="0.5" stop-color="#ff4d9d"/>
-      <stop offset="1" stop-color="#ff1f7a"/>
+      <stop stop-color="#e0357a"/>
+      <stop offset="0.5" stop-color="#d42465"/>
+      <stop offset="1" stop-color="#cc1757"/>
     </linearGradient>
   </defs>
-  <rect width="32" height="32" rx="8" fill="#23252e"/>
+  <rect width="32" height="32" rx="8" fill="#f9f8f3" stroke="#131210" stroke-width="1"/>
   <!-- antennae -->
-  <path d="M12.6 7.2 L10.8 4" stroke="#ff1f7a" stroke-width="1.1" stroke-linecap="round" fill="none"/>
-  <path d="M19.4 7.2 L21.2 4" stroke="#ff1f7a" stroke-width="1.1" stroke-linecap="round" fill="none"/>
-  <circle cx="10" cy="3.35" r="0.75" fill="#ff4d9d"/>
-  <circle cx="22" cy="3.35" r="0.75" fill="#ff4d9d"/>
+  <path d="M12.6 7.2 L10.8 4" stroke="#cc1757" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+  <path d="M19.4 7.2 L21.2 4" stroke="#cc1757" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+  <circle cx="10" cy="3.35" r="0.75" fill="#e0357a"/>
+  <circle cx="22" cy="3.35" r="0.75" fill="#e0357a"/>
   <!-- head -->
   <ellipse cx="16" cy="8.6" rx="4.15" ry="3.05" fill="url(#lb-body)"/>
   <!-- body + spots -->
@@ -27,9 +27,9 @@
   <!-- wing line -->
   <path
     d="M16 11.5 V28.5"
-    stroke="#292c38"
+    stroke="#f9f8f3"
     stroke-width="0.85"
     stroke-linecap="round"
-    opacity="0.35"
+    opacity="0.55"
   />
 </svg>

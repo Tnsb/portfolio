@@ -36,6 +36,17 @@ export const writing = {
 
 export const projects = [
   {
+    id: "tessa",
+    name: "Tessa: agentic transportation orchestration",
+    mockupBg: "#ffe4f2",
+    mockupSrc: "/projects/tessa-mockup.png",
+    mockupAlt:
+      "Tessa orchestration dashboard: inbound email trigger flowing through a LangGraph intent router into Load Tracking, Load Watch, Freight Intelligence, and Exception Monitoring sub-flows.",
+    tag: "LangGraph · intent routing · Armada capstone",
+    body:
+      "Intent-routing layer in LangGraph that triages inbound freight requests into sub-flows—Load Tracking, Load Watch, Freight Intelligence, and Exception Monitoring—reducing the need for human involvement in email handling and increasing operational efficiency.",
+  },
+  {
     id: "aeromind",
     name: "AeroMind",
     mockupBg: "#c8d4ef",
@@ -44,9 +55,9 @@ export const projects = [
       "Operations dashboard with workflow KPIs, human gate approval, agent pipeline, and governance controls.",
     tag: "Multi-agent AI · Air cargo",
     body:
-      "LangGraph-style air-cargo orchestration: load optimization, rerouting, and compliance agents; OpenAI tool use; pgvector for regulatory RAG; Postgres state; React dashboard for approvals. Scoping docs covered roles, escalation rules, and success metrics.",
+      "Multi-agent system in LangGraph for air cargo operations: designed the agent graph architecture and an orchestration layer that routes tasks dynamically across routing, capacity, and disruption agents.",
     extra:
-      "Stakeholder writeups, per-agent LLM-judge evals on labeled scenarios, and decision logs.",
+      "RAG-based compliance checking with pgvector and an LLM-as-judge evaluation framework scoring agent decisions across 50 labeled test scenarios before deployment.",
     links: [
       {
         label: "GitHub",
@@ -62,11 +73,10 @@ export const projects = [
     mockupAlt:
       "Query result table of watch events: id, time, user_id, movie_id, minute (sample ingestion data).",
     mockupContain: true,
-    tag: "LightGBM · collaborative filtering · training at scale · governance",
+    tag: "Kafka · LightGBM · FastAPI · drift detection",
     body:
-      "Trained and compared recommendation models on 240K+ ratings—collaborative filtering vs LightGBM—using RMSE, training time, model footprint, and inference latency; LightGBM was chosen for the full serving profile. The work also covered drift monitoring, provenance for data and model artifacts, compliance and security expectations, and load validation on a production-style path sustained past 1,000 events per second.",
-    extra:
-      "Served via FastAPI with CI-driven model reloads and latency targets aligned to the chosen model.",
+      "Data ingestion pipeline (Kafka to PostgreSQL) and FastAPI prediction service for a recommendation system serving 1M+ users, with Pydantic validation, dead-letter handling, and drift detection flagging distribution shifts before they reached production. Trained collaborative filtering and LightGBM models on 240K+ ratings; LightGBM won with 15% lower RMSE, 6x faster training, and a 95% smaller disk footprint.",
+    extra: "Deployed behind a FastAPI endpoint with a 600ms latency SLA.",
     links: [
       {
         label: "GitHub",
@@ -128,10 +138,10 @@ export const projects = [
     mockupSrc: "/projects/hands-mockup.png",
     mockupAlt: "Tina Sibbal demonstrating fist gesture recognition with keypoint overlay.",
     mockupNatural: true,
-    tag: "YOLO11 pose · gestures · rehabilitation benchmarking",
+    tag: "PyTorch · ResNet CNN · rehabilitation",
     body:
-      "YOLO11-based 21-keypoint hand tracking, rule-based gesture classifiers (open palm, fist, thumbs-up), rep counting for rehab-style exercises, and benchmarks vs MediaPipe.",
-    extra: "Eval first; planned follow-on for harder occlusion (e.g. fingertips).",
+      "ResNet-based CNN trained in PyTorch to detect 21 hand keypoints from RGB images, benchmarked against Google MediaPipe—the first webcam-only solution purpose-built for at-home hand rehabilitation for stroke survivors.",
+    extra: "Gesture classifiers and rep counting for rehab-style exercises.",
     links: [
       { label: "GitHub", href: "https://github.com/tahazakir/hand_pose_est" },
     ],
@@ -162,6 +172,18 @@ const fav = (domain) =>
   `https://www.google.com/s2/favicons?domain=${encodeURIComponent(domain)}&sz=64`;
 
 export const jobs = [
+  {
+    id: "vantage",
+    title: "Co-founder",
+    org: "Vantage",
+    orgUrl: "https://github.com/Tnsb/vantage",
+    logoUrl: "/logos/vantage.svg",
+    tagline: "Predicted-revenue simulation for AI customer agents",
+    location: "Pittsburgh, PA",
+    period: "2026 to Present",
+    expanded:
+      "Point Vantage at an AI support or retention agent and it runs hundreds of realistic synthetic customers against it, returning a one-page forecast—churn-save rate, conversion, and escalation by customer segment—before the agent touches a real customer. Every run saves its predictions; when real results arrive, Vantage shows predicted vs. actual. Where Maxim, Coval, LangSmith, Arize, and Snowglobe sell QA scores to engineers, Vantage is the independent layer that sells predicted revenue impact to the P&L owner—and the only tool that tracks whether its predictions were right, compounding per-vertical calibration data with every run.",
+  },
   {
     id: "trackonomy",
     title: "Senior Software Engineer",

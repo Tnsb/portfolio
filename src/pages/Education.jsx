@@ -1,4 +1,5 @@
 import { DocumentTitle } from "../components/DocumentTitle.jsx";
+import { PagePixels } from "../components/PagePixels.jsx";
 import { education } from "../data/siteContent.js";
 
 export function Education() {
@@ -6,6 +7,7 @@ export function Education() {
     <>
       <DocumentTitle title="Education" />
       <div className="container page page--education">
+        <PagePixels seed={2} />
         <header className="page-header page-header--education">
           <h1>Education</h1>
         </header>

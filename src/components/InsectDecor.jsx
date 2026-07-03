@@ -9,34 +9,34 @@ function insectRouteClass(pathname) {
   return "home";
 }
 
-/** Minimal firefly: glow + arcs in hot pink (gradient id unique per instance). */
+/** Minimal firefly: glow + arcs in magenta ink (gradient id unique per instance). */
 function FireflyGlyph({ className }) {
   const gradId = useId().replace(/:/g, "");
   return (
     <svg className={className} viewBox="0 0 40 40" width="40" height="40" aria-hidden>
       <circle cx="14" cy="22" r="3.4" fill={`url(#${gradId})`} opacity="0.92" />
-      <circle cx="12.8" cy="21" r="1.15" fill="#ffe8f4" opacity="0.65" />
+      <circle cx="12.8" cy="21" r="1.15" fill="#f6cbe0" opacity="0.85" />
       <path
         d="M17 22c6-1 12 0 18 4"
         fill="none"
-        stroke="#ff7eb8"
+        stroke="#cc1757"
         strokeWidth="0.95"
         strokeLinecap="round"
-        opacity="0.88"
+        opacity="0.7"
       />
       <path
         d="M22 12c2 3 1 7-2 9"
         fill="none"
-        stroke="#ff5aa0"
+        stroke="#cc1757"
         strokeWidth="0.82"
         strokeLinecap="round"
-        opacity="0.82"
+        opacity="0.6"
       />
       <defs>
         <radialGradient id={gradId} cx="35%" cy="35%" r="65%">
-          <stop offset="0%" stopColor="#fff0f8" stopOpacity="0.96" />
-          <stop offset="50%" stopColor="#ff4d9d" stopOpacity="0.92" />
-          <stop offset="100%" stopColor="#ff1f7a" stopOpacity="0.78" />
+          <stop offset="0%" stopColor="#f6cbe0" stopOpacity="0.96" />
+          <stop offset="50%" stopColor="#e0357a" stopOpacity="0.92" />
+          <stop offset="100%" stopColor="#cc1757" stopOpacity="0.85" />
         </radialGradient>
       </defs>
     </svg>
@@ -108,27 +108,23 @@ export function DragonflyGlyph({ className }) {
 }
 
 /**
- * Wallpaper: two each — ladybugs, dragonflies, butterflies;
- * one firefly glyph + two ember sparks for glow.
+ * Wallpaper: one each — ladybug, dragonfly, butterfly, firefly —
+ * plus a single ember spark. Kept sparse so the paper stays calm.
+ * Skipped entirely on the home page so the hero stays clean.
  */
 export function InsectDecor() {
   const { pathname } = useLocation();
   const route = insectRouteClass(pathname);
   const wallStyle = useMemo(() => insectWallVars(pathname), [pathname]);
 
+  if (route === "home") return null;
+
   return (
     <div className={`insect-decor insect-decor--route-${route}`} style={wallStyle} aria-hidden>
       <span className="insect-decor__ember insect-decor__ember--a" />
-      <span className="insect-decor__ember insect-decor__ember--b" />
       <LadybugGlyph className="insect-decor__svg insect-decor__svg--ladybug" />
-      <LadybugGlyph className="insect-decor__svg insect-decor__svg--ladybug-b" />
-
       <DragonflyGlyph className="insect-decor__svg insect-decor__svg--dragonfly" />
-      <DragonflyGlyph className="insect-decor__svg insect-decor__svg--dragonfly-sm" />
-
       <ButterflyGlyph className="insect-decor__svg insect-decor__svg--butterfly" />
-      <ButterflyGlyph className="insect-decor__svg insect-decor__svg--butterfly-b" />
-
       <FireflyGlyph className="insect-decor__svg insect-decor__svg--firefly" />
     </div>
   );

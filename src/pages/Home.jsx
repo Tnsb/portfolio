@@ -1,5 +1,6 @@
 import { DocumentTitle } from "../components/DocumentTitle.jsx";
 import { IconInline } from "../components/IconInline.jsx";
+import { PixelCluster } from "../components/PixelCluster.jsx";
 import { links } from "../data/siteContent.js";
 
 const heroTags = ["AI engineering", "Agents & production ML", "Shipping real systems"];
@@ -9,6 +10,20 @@ export function Home() {
     <>
       <DocumentTitle title="Home" />
       <section className="hero">
+        <PixelCluster
+          className="hero__pixels hero__pixels--right"
+          origin="bottom-right"
+          seed={11}
+          colors={["#ffc8e5", "#ffc300", "#cc1757"]}
+        />
+        <PixelCluster
+          className="hero__pixels hero__pixels--left"
+          origin="top-left"
+          seed={4}
+          cols={11}
+          rows={7}
+          colors={["#ffc300", "#ffc8e5", "#cc1757"]}
+        />
         <div className="hero__layout">
           <h1 className="hero__name">
             <span className="hero__name-first">Tina</span>
@@ -27,8 +42,15 @@ export function Home() {
           </figure>
           <div className="hero__rest">
             <p className="hero__tagline">
-              M.S. in Artificial Intelligence at <strong>Carnegie Mellon</strong>. Before that, senior software engineer
-              at <strong>Trackonomy</strong>, a unicorn IoT logistics startup (last-mile visibility, APIs, and customer-facing tools).
+              M.S. in Artificial Intelligence at <strong>Carnegie Mellon</strong>, currently building{" "}
+              <strong>
+                <a href="https://github.com/Tnsb/vantage" target="_blank" rel="noopener noreferrer">
+                  Vantage
+                </a>
+              </strong>
+              , a simulation layer that forecasts the revenue impact of AI customer agents. Before that, senior software
+              engineer at <strong>Trackonomy</strong>, a unicorn IoT logistics startup (last-mile visibility, APIs, and
+              customer-facing tools).
             </p>
 
             <div className="hero-focus" role="group" aria-label="Focus areas">

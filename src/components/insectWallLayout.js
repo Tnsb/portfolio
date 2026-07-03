@@ -1,4 +1,4 @@
-/** Full-viewport wallpaper: even ~3×3 grid + route jitter (center column included; glyphs sit under content via z-index). */
+/** Full-viewport wallpaper: sparse anchors + route jitter (glyphs sit under content via z-index). */
 
 function hashPath(pathname) {
   let h = 2166136261;
@@ -24,30 +24,16 @@ function clamp(n, lo, hi) {
   return Math.min(hi, Math.max(lo, n));
 }
 
-/** Nine anchor points: corners, edges, and center — spread across the whole viewport. */
+/** Five anchor points: corners + center — spread across the whole viewport. */
 const BASE = [
   { l: 11, t: 13 },
-  { l: 50, t: 11 },
   { l: 88, t: 14 },
-  { l: 12, t: 48 },
   { l: 50, t: 52 },
-  { l: 87, t: 46 },
   { l: 13, t: 82 },
-  { l: 51, t: 78 },
   { l: 86, t: 84 },
 ];
 
-const KEYS = [
-  "ember-a",
-  "ember-b",
-  "ladybug",
-  "ladybug-b",
-  "dragonfly",
-  "dragonfly-sm",
-  "butterfly",
-  "butterfly-b",
-  "firefly",
-];
+const KEYS = ["ember-a", "ladybug", "dragonfly", "butterfly", "firefly"];
 
 /**
  * CSS variables on `.insect-decor`: `--wall-{key}-left`, `--wall-{key}-top` (percent strings).
@@ -57,7 +43,7 @@ export function insectWallVars(pathname) {
   const rand = mulberry32(seed);
   const out = {};
 
-  for (let i = 0; i < 9; i++) {
+  for (let i = 0; i < KEYS.length; i++) {
     const jx = (rand() - 0.5) * 10;
     const jy = (rand() - 0.5) * 12;
     const l = clamp(BASE[i].l + jx, 4, 96);
