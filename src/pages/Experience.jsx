@@ -1,4 +1,5 @@
 import { DocumentTitle } from "../components/DocumentTitle.jsx";
+import { PagePixels } from "../components/PagePixels.jsx";
 import { jobs } from "../data/siteContent.js";
 
 export function Experience() {
@@ -6,11 +7,12 @@ export function Experience() {
     <>
       <DocumentTitle title="Experience" />
       <div className="container page">
+        <PagePixels seed={1} />
         <header className="page-header">
           <h1>Experience</h1>
         </header>
 
-        <div className="stack">
+        <div className="experience-grid">
           {jobs.map((job) => (
             <article key={job.id} className="card card--experience">
               <header className="card__top">
@@ -48,30 +50,14 @@ export function Experience() {
                       </strong>
                       <span className="muted"> · {job.tagline}</span>
                     </p>
-                    <p className="card__loc muted">{job.location}</p>
                   </div>
                 </div>
-                <p className="card__period">{job.period}</p>
+                <p className="card__facts">
+                  <span className="card__period">{job.period}</span>
+                  <span className="card__loc muted">{job.location}</span>
+                </p>
               </header>
               <p className="card__expanded">{job.expanded}</p>
-              {job.bulletGroups ? (
-                job.bulletGroups.map((group) => (
-                  <div key={group.title} className="bullet-group">
-                    <h3 className="bullet-group__title">{group.title}</h3>
-                    <ul className="bullets">
-                      {group.items.map((b, i) => (
-                        <li key={`${job.id}-${group.title}-${i}`}>{b}</li>
-                      ))}
-                    </ul>
-                  </div>
-                ))
-              ) : (
-                <ul className="bullets">
-                  {job.bullets.map((b, i) => (
-                    <li key={`${job.id}-${i}`}>{b}</li>
-                  ))}
-                </ul>
-              )}
             </article>
           ))}
         </div>

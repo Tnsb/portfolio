@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
-import { TransitionLink } from "./TransitionLink.jsx";
 import { TransitionNavLink } from "./TransitionNavLink.jsx";
 
 const nav = [
   { to: "/", label: "Home", end: true },
-  { to: "/about", label: "About" },
   { to: "/experience", label: "Experience" },
   { to: "/education", label: "Education" },
   { to: "/projects", label: "Projects" },
-  { to: "/contact", label: "Contact" },
+  { to: "/blogs", label: "Blogs" },
 ];
 
 function navClass({ isActive }) {
@@ -35,60 +33,58 @@ export function Header() {
   return (
     <header className="site-header">
       <div className="site-header__inner">
-        <TransitionLink to="/" className="site-logo">
-          Tina Sibbal
-        </TransitionLink>
+        <div className="site-nav-shell">
+          <nav className="site-nav site-nav--desktop" aria-label="Primary">
+            {nav.map(({ to, label, end }) => (
+              <TransitionNavLink key={to} to={to} end={end} className={navClass}>
+                {label}
+              </TransitionNavLink>
+            ))}
+          </nav>
 
-        <nav className="site-nav site-nav--desktop" aria-label="Primary">
-          {nav.map(({ to, label, end }) => (
-            <TransitionNavLink key={to} to={to} end={end} className={navClass}>
-              {label}
-            </TransitionNavLink>
-          ))}
-        </nav>
-
-        <button
-          type="button"
-          className="nav-toggle"
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span className="visually-hidden">{open ? "Close menu" : "Open menu"}</span>
-          {open ? (
-            <svg
-              className="nav-toggle__svg"
-              viewBox="0 0 24 24"
-              width="22"
-              height="22"
-              aria-hidden
-            >
-              <path
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                d="M6 6l12 12M18 6L6 18"
-              />
-            </svg>
-          ) : (
-            <svg
-              className="nav-toggle__svg"
-              viewBox="0 0 24 24"
-              width="22"
-              height="22"
-              aria-hidden
-            >
-              <path
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                d="M5 8h14M5 12h14M5 16h14"
-              />
-            </svg>
-          )}
-        </button>
+          <button
+            type="button"
+            className="nav-toggle"
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            onClick={() => setOpen((v) => !v)}
+          >
+            <span className="visually-hidden">{open ? "Close menu" : "Open menu"}</span>
+            {open ? (
+              <svg
+                className="nav-toggle__svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  d="M6 6l12 12M18 6L6 18"
+                />
+              </svg>
+            ) : (
+              <svg
+                className="nav-toggle__svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  d="M5 8h14M5 12h14M5 16h14"
+                />
+              </svg>
+            )}
+          </button>
+        </div>
       </div>
 
       <div
