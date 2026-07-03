@@ -20,13 +20,15 @@ export function Layout() {
         Skip to content
       </a>
       <ReadingProgress />
-      <Header />
-      <main id="main-content" className="main-shell">
-        <div key={pathname} className="page-transition-outlet">
-          <Outlet />
-        </div>
-      </main>
-      <Footer />
+      <div className="site-shell">
+        <Header />
+        <main id="main-content" className="main-shell">
+          <div key={pathname} className="page-transition-outlet">
+            <Outlet />
+          </div>
+        </main>
+        <Footer />
+      </div>
     </>
   );
 }

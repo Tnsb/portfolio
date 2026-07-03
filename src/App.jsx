@@ -5,6 +5,8 @@ import { Blogs } from "./pages/Blogs.jsx";
 import { Experience } from "./pages/Experience.jsx";
 import { Education } from "./pages/Education.jsx";
 import { Projects } from "./pages/Projects.jsx";
+import { CaseStudies } from "./pages/CaseStudies.jsx";
+import { CaseStudy } from "./pages/CaseStudy.jsx";
 
 export default function App() {
   return (
@@ -16,6 +18,8 @@ export default function App() {
         <Route path="/experience" element={<Experience />} />
         <Route path="/education" element={<Education />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/case-studies" element={<CaseStudies />} />
+        <Route path="/case-studies/:slug" element={<CaseStudy />} />
         <Route path="/contact" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>
