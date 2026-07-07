@@ -177,18 +177,6 @@ const fav = (domain) =>
 
 export const jobs = [
   {
-    id: "vantage",
-    title: "Co-founder",
-    org: "Vantage",
-    orgUrl: "https://github.com/Tnsb/vantage",
-    logoUrl: assetUrl("/logos/vantage.png"),
-    tagline: "Predicted-revenue simulation for AI agents",
-    location: "Pittsburgh, PA",
-    period: "2026 to Present",
-    expanded:
-      "Point Vantage at an AI support or retention agent and it runs hundreds of realistic synthetic customers against it, returning a one-page forecast (churn-save rate, conversion, and escalation by customer segment) before the agent touches a real customer. Every run saves its predictions; when real results arrive, Vantage shows predicted vs. actual. Where Maxim, Coval, LangSmith, Arize, and Snowglobe sell QA scores to engineers, Vantage is the independent layer that sells predicted revenue impact to the P&L owner, and the only tool that tracks whether its predictions were right, compounding per-vertical calibration data with every run.",
-  },
-  {
     id: "trackonomy",
     title: "Senior Software Engineer",
     org: "Trackonomy",

@@ -12,25 +12,25 @@ export const caseStudies = [
     slug: "vantage",
     name: "Vantage",
     tagline: "Predicted-revenue simulation for AI agents",
-    eyebrow: "Co-founder · Currently building · 2026",
+    eyebrow: "Product strategy case study · AI agents · 2026",
     logoSrc: assetUrl("/logos/vantage.png"),
     logoAlt: "Vantage logo",
     summary:
-      "Run hundreds of realistic synthetic customers against an AI support or retention agent and get a one-page revenue forecast (churn-save, conversion, and escalation by segment) before the agent touches a real customer.",
+      "A product strategy case study: how to position an independent simulation layer that forecasts revenue impact for AI support and retention agents, when incumbents sell QA scores to engineers and agent vendors grade their own homework.",
     repoUrl: "https://github.com/Tnsb/vantage",
     sections: [
       {
         label: "Problem, and who has it",
         paragraphs: [
           "Companies are handing revenue-critical conversations (cancellations, renewals, support escalations) to AI agents, and the person accountable for the result has no way to know what the agent will do to the business before it goes live. Today's tooling answers a different question: it runs test cases and returns QA scores, written for engineers. But the deploy decision belongs to the P&L owner, and a QA score doesn't tell them whether the agent will save churning customers or quietly lose an entire segment.",
-          "That's the gap I'm building Vantage for. Point it at your AI support or retention agent and it runs hundreds of realistic synthetic customers against it, then returns a one-page forecast: churn-save rate, conversion, and escalation by customer segment, before the agent touches a real customer. Every run saves its predictions; when real results come in, Vantage shows predicted vs. actual.",
+          "The product concept: point a simulation layer at an AI support or retention agent, run hundreds of realistic synthetic customers against it, and return a one-page forecast (churn-save rate, conversion, and escalation by customer segment) before the agent touches a real customer. Every run saves its predictions; when real results come in, the system shows predicted vs. actual. That reconciliation loop is the core PM bet: trust in the number compounds with every run.",
         ],
       },
       {
         label: "Market & alternatives",
         paragraphs: [
           "The simulation-and-evals space splits into two camps. Maxim, Coval, LangSmith, Arize, and Snowglobe sell QA scores to engineers, useful for catching regressions, silent on revenue. Cresta and Sierra bundle simulation inside their own agent platforms, which means a vendor grading its own agent.",
-          "Vantage takes a third position: the independent layer that sells predicted revenue impact to the P&L owner, and the only tool that tracks whether its predictions were right. Simulation as outcome prediction has been validated in academia (SimGym, 2026); no product owns it yet.",
+          "Vantage explores a third position: the independent layer that sells predicted revenue impact to the P&L owner, and the only approach that tracks whether its predictions were right. Simulation as outcome prediction has been validated in academia (SimGym, 2026); no product owns it yet. The PM work here was mapping that white space, naming the buyer, and defining what artifact they need to say yes to a rollout.",
         ],
       },
       {
@@ -43,7 +43,7 @@ export const caseStudies = [
           },
           {
             title: "Stay independent of agent vendors.",
-            text: "Bundled simulation from Cresta or Sierra is a vendor grading its own agent. Positioning Vantage as the independent referee gives up their distribution, but independence is the whole basis of trust in the number.",
+            text: "Bundled simulation from Cresta or Sierra is a vendor grading its own agent. Positioning as the independent referee gives up their distribution, but independence is the whole basis of trust in the number.",
           },
           {
             title: "Make calibration the compounding moat.",
@@ -56,22 +56,24 @@ export const caseStudies = [
         ],
       },
       {
-        label: "What we shipped",
+        label: "Product concept & demo",
         paragraphs: [
           "The demo scenario is a subscription company's cancellation agent. Run 1 sends 250 synthetic customers through it; the report shows the agent losing 60% of price-sensitive customers at turn 3, where it fails to offer a discount. Change one line in the agent's instructions and rerun. Run 2 shows churn-save up 18 points in that segment, presented as a before/after delta.",
-          "The demo closes on the prediction record: the forecast is saved and later reconciled against real retention data. That loop (predict, ship, reconcile) is the calibration flywheel the product is built around.",
+          "The demo closes on the prediction record: the forecast is saved and later reconciled against real retention data. That loop (predict, ship, reconcile) is the calibration flywheel the product concept is built around. The prototype exists to test whether a P&L owner can make a deploy decision from the artifact alone.",
         ],
       },
       {
-        label: "Metrics & outcomes",
+        label: "Metrics framework",
         paragraphs: [
-          "Honest status: pre-launch. I'm building Vantage now (2026), so there are no revenue or usage numbers to report yet. The metric that will matter most isn't sign-ups; it's prediction accuracy per vertical: how close each forecast lands to the real churn-save and conversion numbers it predicted. Every reconciled run either builds or spends trust in the number on the page.",
+          "North-star metric: prediction accuracy per vertical, how close each forecast lands to the real churn-save and conversion numbers it predicted. Every reconciled run either builds or spends trust in the number on the page.",
+          "Supporting metrics for a PM rollout: time-to-first-forecast (how fast a team gets a segment-level read), forecast-driven deploy decisions (did the report change what shipped?), and reconciliation rate (what share of predictions get compared to real outcomes). Sign-ups matter less than whether the first three design partners trust the number enough to run a second simulation.",
         ],
       },
       {
-        label: "What's next",
+        label: "What I'd prioritize next",
         paragraphs: [
-          "First design partners: teams running AI retention or support agents who will let Vantage forecast a rollout, then reconcile the prediction against real retention data. Each one starts the calibration flywheel turning in a real vertical.",
+          "Design-partner discovery with teams running AI retention or support agents: validate that a one-page revenue forecast is the artifact they need, and that predicted-vs-actual reconciliation is credible enough to influence a rollout.",
+          "Vertical calibration playbook: define how persona models get tuned per industry so prediction accuracy becomes a repeatable story, not a one-off demo.",
         ],
       },
     ],

@@ -28,14 +28,9 @@ export function Home() {
           </figure>
           <div className="hero__rest">
             <p className="hero__tagline">
-              M.S. in AI Systems Management at <strong>Carnegie Mellon</strong>, currently building{" "}
-              <strong>
-                <a href="https://github.com/Tnsb/vantage" target="_blank" rel="noopener noreferrer">
-                  Vantage
-                </a>
-              </strong>
-              , a simulation layer that forecasts the revenue impact of AI agents. Before that, senior software
-              engineer at <strong>Trackonomy</strong>, a unicorn IoT logistics startup (last-mile visibility, APIs, and
+              M.S. in AI Systems Management at <strong>Carnegie Mellon</strong>, focused on agentic systems, AI product
+              strategy, and shipping production ML. Before that, senior software engineer at{" "}
+              <strong>Trackonomy</strong>, a unicorn IoT logistics startup (last-mile visibility, APIs, and
               customer-facing tools).
             </p>
 
