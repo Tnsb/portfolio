@@ -31,12 +31,12 @@
   --font-display: "Schibsted Grotesk", system-ui, sans-serif;
   --font-body: "Public Sans", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
-  --page-gutter: clamp(1.25rem, 5vw, 3rem);
-  --container-max: 74rem;
+  --page-gutter: clamp(1.75rem, 8vw, 4.5rem);
+  --container-max: 64rem;
   --container: min(var(--container-max), calc(100vw - var(--page-gutter) * 2));
-  --surface-pad: clamp(1.05rem, 2.2vw, 1.4rem);
-  --surface-pad-lg: clamp(1.25rem, 2.8vw, 1.75rem);
-  --content-inset: clamp(0.75rem, 3vw, 1.35rem);
+  --surface-pad: clamp(0.95rem, 1.6vw, 1.15rem);
+  --surface-pad-lg: clamp(1.05rem, 2vw, 1.35rem);
+  --content-inset: clamp(0.45rem, 1.2vw, 0.75rem);
   --header-h: clamp(4rem, 11vw, 4.55rem);
   --touch-min: 44px;
   --blur-glass: blur(20px) saturate(1.1);
@@ -52,14 +52,20 @@
   color-scheme: light;
 }
 
-/* Laptop / smaller desktop: more side margin, slightly narrower column, tighter cards */
-@media (max-width: 89.99rem) {
+/* Large external monitor only — laptops default to tighter layout above */
+@media (min-width: 110rem) {
   :root {
-    --page-gutter: clamp(1.5rem, 7vw, 3.5rem);
-    --container-max: 62rem;
-    --surface-pad: clamp(0.9rem, 1.5vw, 1.1rem);
-    --surface-pad-lg: clamp(1rem, 2vw, 1.3rem);
-    --content-inset: clamp(0.65rem, 1.75vw, 0.95rem);
+    --page-gutter: clamp(1.5rem, 5vw, 4rem);
+    --container-max: 74rem;
+    --surface-pad: clamp(1.05rem, 2.2vw, 1.4rem);
+    --surface-pad-lg: clamp(1.25rem, 2.8vw, 1.75rem);
+    --content-inset: clamp(0.75rem, 3vw, 1.35rem);
+  }
+}
+
+@media (min-width: 120rem) {
+  :root {
+    --container-max: 84rem;
   }
 }
 
@@ -672,7 +678,7 @@ a:hover {
   }
 }
 
-@media (min-width: 56rem) and (max-width: 89.99rem) {
+@media (min-width: 56rem) and (max-width: 109.99rem) {
   .hero__layout {
     grid-template-columns: minmax(0, 1fr) clamp(190px, 22vw, 300px);
     column-gap: clamp(1.15rem, 2.5vw, 1.85rem);
@@ -684,15 +690,15 @@ a:hover {
   }
 }
 
-@media (min-width: 75rem) {
+@media (min-width: 75rem) and (max-width: 109.99rem) {
   .hero {
     padding-top: clamp(0.75rem, 1.8vw, 1.5rem);
     padding-bottom: clamp(0.75rem, 1.8vw, 1.5rem);
   }
 
   .hero__layout {
-    grid-template-columns: minmax(0, 1.08fr) clamp(240px, 26vw, 400px);
-    column-gap: clamp(1.75rem, 3.5vw, 3rem);
+    grid-template-columns: minmax(0, 1.08fr) clamp(220px, 24vw, 340px);
+    column-gap: clamp(1.35rem, 2.5vw, 2rem);
     row-gap: clamp(1rem, 2vw, 1.5rem);
   }
 
@@ -710,10 +716,10 @@ a:hover {
   }
 }
 
-@media (min-width: 90rem) {
-  :root {
-    --container-max: 84rem;
-    --page-gutter: clamp(1.5rem, 5vw, 4rem);
+@media (min-width: 110rem) {
+  .hero {
+    padding-top: clamp(0.75rem, 1.8vw, 1.5rem);
+    padding-bottom: clamp(0.75rem, 1.8vw, 1.5rem);
   }
 
   .hero__layout {
@@ -1007,21 +1013,30 @@ a:hover {
 
 /* Sections */
 .section {
-  padding: clamp(1.75rem, 4vw, 2.75rem) 0;
+  padding: clamp(1.35rem, 3.5vw, 2.25rem) 0;
 }
 
-@media (max-width: 89.99rem) {
+.card-grid,
+.experience-grid,
+.case-study-grid,
+.stack {
+  gap: clamp(0.75rem, 1.6vw, 1rem);
+}
+
+@media (min-width: 110rem) {
   .section {
-    padding: clamp(1.35rem, 3.5vw, 2.25rem) 0;
+    padding: clamp(1.75rem, 4vw, 2.75rem) 0;
   }
 
   .card-grid,
   .experience-grid,
   .case-study-grid,
   .stack {
-    gap: clamp(0.75rem, 1.6vw, 1rem);
+    gap: clamp(0.85rem, 2vw, 1.15rem);
   }
+}
 
+@media (max-width: 109.99rem) {
   .case-study-card__title {
     font-size: clamp(1.3rem, 2vw, 1.55rem);
   }
