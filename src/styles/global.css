@@ -31,7 +31,12 @@
   --font-display: "Schibsted Grotesk", system-ui, sans-serif;
   --font-body: "Public Sans", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
-  --container: min(74rem, calc(100vw - clamp(1rem, 5vw, 3rem) * 2));
+  --page-gutter: clamp(1.25rem, 5vw, 3rem);
+  --container-max: 74rem;
+  --container: min(var(--container-max), calc(100vw - var(--page-gutter) * 2));
+  --surface-pad: clamp(1.05rem, 2.2vw, 1.4rem);
+  --surface-pad-lg: clamp(1.25rem, 2.8vw, 1.75rem);
+  --content-inset: clamp(0.75rem, 3vw, 1.35rem);
   --header-h: clamp(4rem, 11vw, 4.55rem);
   --touch-min: 44px;
   --blur-glass: blur(20px) saturate(1.1);
@@ -45,6 +50,24 @@
   /* Insect entrance on route change (multi-step keyframes use this curve) */
   --insect-motion-ease: cubic-bezier(0.21, 0.98, 0.29, 1);
   color-scheme: light;
+}
+
+/* Laptop / smaller desktop: more side margin, slightly narrower column, tighter cards */
+@media (max-width: 89.99rem) {
+  :root {
+    --page-gutter: clamp(1.5rem, 7vw, 3.5rem);
+    --container-max: 62rem;
+    --surface-pad: clamp(0.9rem, 1.5vw, 1.1rem);
+    --surface-pad-lg: clamp(1rem, 2vw, 1.3rem);
+    --content-inset: clamp(0.65rem, 1.75vw, 0.95rem);
+  }
+}
+
+@media (max-width: 47.99rem) {
+  :root {
+    --page-gutter: clamp(1.15rem, 5.5vw, 1.65rem);
+    --container-max: 100%;
+  }
 }
 
 *,
@@ -339,7 +362,7 @@ a:hover {
   align-items: center;
   justify-content: center;
   min-height: calc(var(--header-h) + 0.4rem);
-  padding: 0.55rem clamp(0.75rem, 4vw, 1.5rem) 0.65rem;
+  padding: 0.55rem var(--content-inset) 0.65rem;
   background: transparent;
   border-bottom: none;
   box-shadow: none;
@@ -458,7 +481,7 @@ a:hover {
   right: 0;
   top: var(--header-h);
   bottom: 0;
-  padding: 1.1rem clamp(0.75rem, 4vw, 1.5rem) calc(1.25rem + env(safe-area-inset-bottom));
+  padding: 1.1rem var(--content-inset) calc(1.25rem + env(safe-area-inset-bottom));
   /* Solid panel: translucent blur let page content show through and hurt readability */
   background: var(--paper);
   backdrop-filter: none;
@@ -552,7 +575,7 @@ a:hover {
   width: 100%;
   max-width: none;
   margin-inline: 0;
-  padding-inline: clamp(1.25rem, 5vw, 3rem);
+  padding-inline: var(--page-gutter);
   box-sizing: border-box;
 }
 
@@ -613,7 +636,7 @@ a:hover {
   z-index: 1;
   width: var(--container);
   margin-inline: auto;
-  padding: clamp(1rem, 2.5vw, 1.75rem) clamp(0.75rem, 4vw, 1.5rem);
+  padding: clamp(1rem, 2.5vw, 1.75rem) var(--content-inset);
 }
 
 .hero__layout {
@@ -649,6 +672,18 @@ a:hover {
   }
 }
 
+@media (min-width: 56rem) and (max-width: 89.99rem) {
+  .hero__layout {
+    grid-template-columns: minmax(0, 1fr) clamp(190px, 22vw, 300px);
+    column-gap: clamp(1.15rem, 2.5vw, 1.85rem);
+  }
+
+  .hero__name-first,
+  .hero__name-last {
+    font-size: clamp(2.15rem, min(4.8vw, 8dvh), 4.5rem);
+  }
+}
+
 @media (min-width: 75rem) {
   .hero {
     padding-top: clamp(0.75rem, 1.8vw, 1.5rem);
@@ -677,7 +712,8 @@ a:hover {
 
 @media (min-width: 90rem) {
   :root {
-    --container: min(84rem, calc(100vw - clamp(1.5rem, 5vw, 4rem) * 2));
+    --container-max: 84rem;
+    --page-gutter: clamp(1.5rem, 5vw, 4rem);
   }
 
   .hero__layout {
@@ -971,7 +1007,24 @@ a:hover {
 
 /* Sections */
 .section {
-  padding: clamp(2rem, 5vw, 3.25rem) 0;
+  padding: clamp(1.75rem, 4vw, 2.75rem) 0;
+}
+
+@media (max-width: 89.99rem) {
+  .section {
+    padding: clamp(1.35rem, 3.5vw, 2.25rem) 0;
+  }
+
+  .card-grid,
+  .experience-grid,
+  .case-study-grid,
+  .stack {
+    gap: clamp(0.75rem, 1.6vw, 1rem);
+  }
+
+  .case-study-card__title {
+    font-size: clamp(1.3rem, 2vw, 1.55rem);
+  }
 }
 
 .section--tight {
@@ -1030,7 +1083,7 @@ a:hover {
   background: var(--card);
   border: 1px solid var(--grid-line);
   border-radius: var(--radius);
-  padding: clamp(1.15rem, 3vw, 1.45rem);
+  padding: var(--surface-pad);
   box-shadow: 0 2px 10px rgba(19, 18, 16, 0.04);
   transition: transform 0.08s ease-out, border-color 0.08s ease-out, box-shadow 0.08s ease-out;
 }
@@ -1106,7 +1159,7 @@ a:hover {
 }
 
 .skills-preview__item {
-  padding: clamp(1rem, 2.5vw, 1.2rem);
+  padding: var(--surface-pad);
   border-radius: var(--radius);
   background: var(--pink-panel-soft);
   border: 1px solid var(--grid-line);
@@ -1151,7 +1204,7 @@ a:hover {
 /* Inner pages */
 .page {
   position: relative;
-  padding: clamp(1.25rem, 4vw, 2rem) clamp(0.75rem, 4vw, 1.5rem) clamp(3rem, 8vw, 4rem);
+  padding: clamp(1.25rem, 4vw, 2rem) var(--content-inset) clamp(3rem, 8vw, 4rem);
 }
 
 .page--narrow {
@@ -1701,7 +1754,7 @@ a:hover {
   display: grid;
   gap: clamp(0.9rem, 2.5vw, 1.35rem);
   align-items: stretch;
-  padding: clamp(0.85rem, 2.2vw, 1.2rem);
+  padding: var(--surface-pad);
   background: var(--card);
   border: 2px solid var(--pink-panel);
   border-radius: calc(var(--radius) + 4px);
@@ -2017,11 +2070,11 @@ a:hover {
   overflow: hidden;
   border: 1px solid rgba(46, 42, 58, 0.1);
   background: var(--project-mockup-bg);
-  padding: clamp(1.1rem, 3.5vw, 1.9rem);
+  padding: var(--surface-pad-lg);
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: clamp(8rem, 18vw, 11.5rem);
+  min-height: clamp(7rem, 15vw, 10rem);
 }
 
 .project-mockup img {
@@ -2478,7 +2531,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   gap: 0.55rem;
-  padding: clamp(1.35rem, 3vw, 1.85rem);
+  padding: var(--surface-pad-lg);
   border: 2px solid var(--pink-panel);
   text-decoration: none;
   color: inherit;
