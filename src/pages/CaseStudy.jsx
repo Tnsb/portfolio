@@ -6,7 +6,7 @@ import { caseStudies } from "../data/caseStudies.js";
 
 function BackLink() {
   return (
-    <TransitionLink className="case-study__back" to="/case-studies">
+    <TransitionLink className="case-study__back" to="/#case-studies">
       ← Back to case studies
     </TransitionLink>
   );
@@ -20,7 +20,7 @@ export function CaseStudy() {
     window.scrollTo(0, 0);
   }, [slug]);
 
-  if (!study) return <Navigate to="/case-studies" replace />;
+  if (!study) return <Navigate to="/#case-studies" replace />;
 
   return (
     <>
@@ -42,9 +42,10 @@ export function CaseStudy() {
             ) : null}
             {study.name}
           </h1>
-          <p className="page-header__lede case-study__tagline">
-            {study.tagline}
-          </p>
+          <p className="page-header__lede case-study__tagline">{study.tagline}</p>
+          {study.eyebrow ? (
+            <p className="case-study-article__eyebrow meta-chip">{study.eyebrow}</p>
+          ) : null}
         </header>
 
         {study.heroSrc ? (
@@ -82,11 +83,7 @@ export function CaseStudy() {
 
         {study.repoUrl ? (
           <p className="case-study__repo">
-            <a
-              href={study.repoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href={study.repoUrl} target="_blank" rel="noopener noreferrer">
               View the repo on GitHub ↗
             </a>
           </p>

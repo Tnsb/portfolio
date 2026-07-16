@@ -1,24 +1,20 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Layout } from "./components/Layout.jsx";
-import { Home } from "./pages/Home.jsx";
-import { Blogs } from "./pages/Blogs.jsx";
-import { Experience } from "./pages/Experience.jsx";
-import { Education } from "./pages/Education.jsx";
-import { Projects } from "./pages/Projects.jsx";
-import { CaseStudies } from "./pages/CaseStudies.jsx";
+import { LegacyHashRedirect, LegacySectionRedirect } from "./components/LegacyRedirects.jsx";
 import { CaseStudy } from "./pages/CaseStudy.jsx";
+import { Home } from "./pages/Home.jsx";
 
 export default function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/blogs" element={<Blogs />} />
-        <Route path="/about" element={<Navigate to="/blogs" replace />} />
-        <Route path="/experience" element={<Experience />} />
-        <Route path="/education" element={<Education />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/case-studies" element={<CaseStudies />} />
+        <Route path="/experience" element={<LegacySectionRedirect />} />
+        <Route path="/education" element={<LegacySectionRedirect />} />
+        <Route path="/projects" element={<LegacySectionRedirect />} />
+        <Route path="/blogs" element={<LegacySectionRedirect />} />
+        <Route path="/about" element={<LegacySectionRedirect />} />
+        <Route path="/case-studies" element={<LegacyHashRedirect hash="case-studies" />} />
         <Route path="/case-studies/:slug" element={<CaseStudy />} />
         <Route path="/contact" element={<Navigate to="/" replace />} />
       </Route>

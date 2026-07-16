@@ -45,6 +45,7 @@ export const projects = [
     mockupAlt:
       "Tessa workflow diagram: an inbound freight email flows through a LangGraph intent router into Load Tracking, Load Watch, Freight Intelligence, and Exception Monitoring sub-flows, ending in an automated response or human escalation.",
     tag: "LangGraph · intent routing · Armada capstone",
+    caseStudySlug: "tessa",
     body:
       "Intent-routing layer in LangGraph that triages inbound freight requests into sub-flows (Load Tracking, Load Watch, Freight Intelligence, and Exception Monitoring), reducing the need for human involvement in email handling and increasing operational efficiency.",
     extra:

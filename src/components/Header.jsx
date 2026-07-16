@@ -1,21 +1,46 @@
-import { useEffect, useState } from "react";
-import { TransitionNavLink } from "./TransitionNavLink.jsx";
+import { useEffect, useMemo, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useSectionSpy } from "../hooks/useSectionSpy.js";
 
 const nav = [
-  { to: "/", label: "Home", end: true },
-  { to: "/experience", label: "Experience" },
-  { to: "/education", label: "Education" },
-  { to: "/projects", label: "Projects" },
-  { to: "/case-studies", label: "Case Studies" },
-  { to: "/blogs", label: "Blogs" },
+  { id: "top", label: "Home" },
+  { id: "experience", label: "Experience" },
+  { id: "education", label: "Education" },
+  { id: "projects", label: "Projects" },
+  { id: "case-studies", label: "Case Studies" },
+  { id: "blogs", label: "Blogs" },
 ];
 
-function navClass({ isActive }) {
-  return isActive ? "site-nav__link is-active" : "site-nav__link";
+function headerOffsetPx() {
+  const header = document.querySelector(".site-header");
+  if (header) {
+    return Math.ceil(header.getBoundingClientRect().height);
+  }
+  const fallback = Number.parseFloat(
+    getComputedStyle(document.documentElement).getPropertyValue("--header-h"),
+  );
+  return Number.isFinite(fallback) && fallback > 10 ? fallback : 86;
+}
+
+function scrollToSection(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const top = window.scrollY + el.getBoundingClientRect().top - headerOffsetPx();
+  window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
 }
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const onHome = pathname === "/";
+  const sectionIds = useMemo(() => nav.map(({ id }) => id), []);
+  const spyId = useSectionSpy(sectionIds, onHome);
+  const activeId = onHome
+    ? spyId
+    : pathname.startsWith("/case-studies")
+      ? "case-studies"
+      : "";
 
   useEffect(() => {
     if (!open) return;
@@ -31,15 +56,33 @@ export function Header() {
     };
   }, [open]);
 
+  const handleNavClick = (id) => (e) => {
+    e.preventDefault();
+    setOpen(false);
+
+    if (!onHome) {
+      navigate(id === "top" ? "/" : `/#${id}`);
+      return;
+    }
+
+    scrollToSection(id);
+    history.replaceState(null, "", id === "top" ? window.location.pathname : `#${id}`);
+  };
+
   return (
     <header className="site-header">
       <div className="site-header__inner">
         <div className="site-nav-shell">
           <nav className="site-nav site-nav--desktop" aria-label="Primary">
-            {nav.map(({ to, label, end }) => (
-              <TransitionNavLink key={to} to={to} end={end} className={navClass}>
+            {nav.map(({ id, label }) => (
+              <a
+                key={id}
+                href={id === "top" ? "#top" : `#${id}`}
+                className={activeId === id ? "site-nav__link is-active" : "site-nav__link"}
+                onClick={handleNavClick(id)}
+              >
                 {label}
-              </TransitionNavLink>
+              </a>
             ))}
           </nav>
 
@@ -94,18 +137,15 @@ export function Header() {
         aria-hidden={!open}
       >
         <nav aria-label="Mobile primary">
-          {nav.map(({ to, label, end }) => (
-            <TransitionNavLink
-              key={to}
-              to={to}
-              end={end}
-              className={({ isActive }) =>
-                isActive ? "mobile-nav__link is-active" : "mobile-nav__link"
-              }
-              onClick={() => setOpen(false)}
+          {nav.map(({ id, label }) => (
+            <a
+              key={id}
+              href={id === "top" ? "#top" : `#${id}`}
+              className={activeId === id ? "mobile-nav__link is-active" : "mobile-nav__link"}
+              onClick={handleNavClick(id)}
             >
               {label}
-            </TransitionNavLink>
+            </a>
           ))}
         </nav>
       </div>

@@ -1,0 +1,48 @@
+import { education } from "../data/siteContent.js";
+
+export function EducationSection() {
+  return (
+    <section id="education" className="container section section--home page--education">
+      <header className="page-header page-header--education">
+        <h2 className="section-title">Education</h2>
+      </header>
+
+      <div className="edu-showcase-stack">
+        {education.map((e, i) => {
+          const ph = e.campusPhoto;
+          const srcSet =
+            ph.src960 && ph.src1920 ? `${ph.src960} 960w, ${ph.src1920} 1920w` : undefined;
+          const src = ph.src1920 ?? ph.src;
+          return (
+            <article
+              key={e.school}
+              className={`edu-feature${i % 2 === 1 ? " edu-feature--reverse" : ""}`}
+            >
+              <div className="edu-feature__media edu-feature__media--campus-mat">
+                <div className="edu-photo__frame">
+                  <img
+                    src={src}
+                    srcSet={srcSet}
+                    sizes={srcSet ? "(min-width: 56rem) 44vw, 100vw" : undefined}
+                    alt={ph.alt}
+                    loading="lazy"
+                    decoding="async"
+                    width={900}
+                    height={1200}
+                  />
+                  <p className="meta-chip edu-feature__place--in-frame">{e.place}</p>
+                </div>
+              </div>
+              <div className="edu-feature__body">
+                <p className="edu-feature__eyebrow">{e.time}</p>
+                <h3 className="edu-feature__title">{e.school}</h3>
+                <p className="edu-feature__degree">{e.detail}</p>
+                {e.notes ? <p className="edu-feature__notes">{e.notes}</p> : null}
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
