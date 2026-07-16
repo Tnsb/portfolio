@@ -1065,20 +1065,20 @@ a:hover {
   box-shadow: 1.5px 1.5px 0 rgba(19, 18, 16, 0.85);
 }
 
-/* Project tags: readable yellow chips, hug content */
+/* Project tags: readable yellow chips — wrap instead of truncating */
 .project-tag.meta-chip {
   display: inline-flex;
   width: fit-content;
   max-width: 100%;
-  margin: 0.15rem 0 0.2rem;
-  padding: 0.22rem 0.5rem;
-  font-size: 0.62rem;
-  letter-spacing: 0.06em;
-  line-height: 1.25;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  margin: 0.15rem 0 0.25rem;
+  padding: 0.26rem 0.55rem;
+  font-size: 0.64rem;
+  letter-spacing: 0.05em;
+  line-height: 1.35;
+  white-space: normal;
+  overflow: visible;
   text-align: left;
+  text-wrap: balance;
   border-width: 1.5px;
   box-shadow: 1.5px 1.5px 0 rgba(19, 18, 16, 0.85);
 }
@@ -2219,18 +2219,19 @@ a:hover {
 .card--project {
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
-  padding: clamp(0.45rem, 0.9vw, 0.65rem);
+  gap: 0.5rem;
+  padding: clamp(0.55rem, 1vw, 0.75rem);
   min-width: 0;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .project-card__meta {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.3rem;
+  gap: 0.35rem;
   min-width: 0;
+  width: 100%;
 }
 
 .card--project .card__title {
@@ -2273,11 +2274,11 @@ a:hover {
   overflow: hidden;
   border: 1px solid rgba(46, 42, 58, 0.1);
   background: var(--project-mockup-bg);
-  padding: 0.35rem;
+  padding: 0.4rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 0;
+  min-height: clamp(5.5rem, 12vh, 7.5rem);
   flex: 1 1 auto;
 }
 
@@ -2298,11 +2299,11 @@ a:hover {
 }
 
 .project-mockup--contain img {
-  max-height: min(14vh, 110px);
+  max-height: min(16vh, 128px);
 }
 
 .project-mockup:not(.project-mockup--contain) img {
-  max-height: min(12vh, 96px);
+  max-height: min(14vh, 112px);
 }
 
 @media (prefers-reduced-motion: reduce) {
